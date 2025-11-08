@@ -149,8 +149,8 @@
         }
 
         .back-to-top-button {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background-color: rgb(20, 20, 20);
             border: none;
@@ -166,7 +166,7 @@
         }
 
         .back-to-top-button__icon {
-            width: 12px;
+            width: 10px;
             transition-duration: 0.3s;
         }
 
@@ -175,7 +175,7 @@
         }
 
         .back-to-top-button:hover {
-            width: 140px;
+            width: 130px;
             border-radius: 50px;
             transition-duration: 0.3s;
             background-color: rgb(181, 160, 255);
@@ -189,14 +189,14 @@
 
         .back-to-top-button::before {
             position: absolute;
-            bottom: -20px;
+            bottom: -18px;
             content: 'Back to Top';
             color: white;
             font-size: 0;
         }
 
         .back-to-top-button:hover::before {
-            font-size: 13px;
+            font-size: 12px;
             opacity: 1;
             bottom: unset;
             transition-duration: 0.3s;
@@ -793,36 +793,16 @@
         }
 
         element.addEventListener('wheel', (event) => {
-            try {
-                if (event.ctrlKey || element.scrollHeight <= element.clientHeight) {
-                    // Let the event bubble to allow page zoom or normal behavior
-                    return;
-                }
-
-                const deltaY = event.deltaY;
-                const atTop = element.scrollTop === 0;
-                const atBottom = Math.abs(element.scrollTop + element.clientHeight - element.scrollHeight) <= 1;
-
-                // If scrolling up but already at top, allow parent/page to scroll
-                if (deltaY < 0 && atTop) {
-                    return;
-                }
-
-                // If scrolling down but already at bottom, allow parent/page to scroll
-                if (deltaY > 0 && atBottom) {
-                    return;
-                }
-
-                // Otherwise consume the event and perform a smooth scroll inside the container
-                event.preventDefault();
-                element.scrollBy({
-                    top: deltaY,
-                    left: event.deltaX,
-                    behavior: 'smooth'
-                });
-            } catch (err) {
-                // Fallback: do nothing and allow normal scrolling
+            if (event.ctrlKey || element.scrollHeight <= element.clientHeight) {
+                return;
             }
+
+            event.preventDefault();
+            element.scrollBy({
+                top: event.deltaY,
+                left: event.deltaX,
+                behavior: 'smooth'
+            });
         }, { passive: false });
 
         element.dataset.smoothScroll = 'true';
