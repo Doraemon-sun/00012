@@ -131,6 +131,76 @@
             animation: none;
             opacity: 0;
         }
+        .back-to-top-button-container {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 40;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(40px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-to-top-button-container[data-visible="true"] {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .back-to-top-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(20, 20, 20);
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px rgba(180, 160, 255, 0.253);
+            cursor: pointer;
+            transition-duration: 0.3s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .back-to-top-button__icon {
+            width: 12px;
+            transition-duration: 0.3s;
+        }
+
+        .back-to-top-button__icon path {
+            fill: white;
+        }
+
+        .back-to-top-button:hover {
+            width: 140px;
+            border-radius: 50px;
+            transition-duration: 0.3s;
+            background-color: rgb(181, 160, 255);
+            align-items: center;
+        }
+
+        .back-to-top-button:hover .back-to-top-button__icon {
+            transition-duration: 0.3s;
+            transform: translateY(-200%);
+        }
+
+        .back-to-top-button::before {
+            position: absolute;
+            bottom: -20px;
+            content: 'Back to Top';
+            color: white;
+            font-size: 0;
+        }
+
+        .back-to-top-button:hover::before {
+            font-size: 13px;
+            opacity: 1;
+            bottom: unset;
+            transition-duration: 0.3s;
+        }
         @media (prefers-reduced-motion: reduce) {
             .logo-track {
                 animation: none !important;
@@ -504,6 +574,13 @@
             </button>
         </div>
     </nav>
+    <!-- From Uiverse.io by vinodjangid07 -->
+    <button id="back-to-top-button" type="button" class="back-to-top-button back-to-top-button-container" aria-label="Quay lại trang đầu">
+        <span class="sr-only">Quay lại trang đầu</span>
+        <svg class="back-to-top-button__icon" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+            <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+        </svg>
+    </button>
     <div id="testimonial-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm px-4">
         <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
             <button id="close-testimonial-modal" type="button" class="absolute right-3 top-3 rounded-full border border-slate-200 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 transition hover:bg-slate-100">
@@ -690,6 +767,7 @@
     const experienceList = document.getElementById('experience-list');
     const projectList = document.getElementById('project-list');
     const skillList = document.getElementById('skill-list');
+    const backToTopButton = document.getElementById('back-to-top-button');
 
     const setImageSourceWithFallback = (imgEl, preferredSrc, fallbackSrc) => {
         if (!imgEl) {
@@ -795,6 +873,67 @@
     let revealObserver = null;
 
     const prefersReducedMotion = () => document.body.classList.contains('reduce-motion');
+
+    let lastScrollY = window.scrollY;
+    let backToTopVisible = false;
+    let backToTopTicking = false;
+
+    const setBackToTopVisibility = (visible) => {
+        if (!backToTopButton) {
+            return;
+        }
+
+        if (visible) {
+            backToTopButton.dataset.visible = 'true';
+        } else {
+            delete backToTopButton.dataset.visible;
+        }
+
+        backToTopVisible = Boolean(visible);
+    };
+
+    const evaluateBackToTopVisibility = () => {
+        if (!backToTopButton) {
+            backToTopTicking = false;
+            lastScrollY = window.scrollY;
+            return;
+        }
+
+        const currentY = window.scrollY;
+        const scrollingUp = currentY < lastScrollY;
+        const DOWN_THRESHOLD = 600; // show when user has scrolled far down
+        const UP_THRESHOLD = 160; // show when scrolling up and not too close to top
+
+        // Show if the user scrolled far down (even while continuing to scroll down),
+        // or when they are scrolling up away from the top.
+        const shouldShow = (currentY > DOWN_THRESHOLD) || (scrollingUp && currentY > UP_THRESHOLD);
+
+        if (shouldShow !== backToTopVisible) {
+            setBackToTopVisibility(shouldShow);
+        }
+
+        lastScrollY = currentY;
+        backToTopTicking = false;
+    };
+
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', () => {
+            if (prefersReducedMotion()) {
+                window.scrollTo(0, 0);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (!backToTopTicking) {
+                backToTopTicking = true;
+                window.requestAnimationFrame(evaluateBackToTopVisibility);
+            }
+        });
+
+        evaluateBackToTopVisibility();
+    }
 
     const heroTypingTarget = document.getElementById('hero-typing');
     const heroTypingPhrases = (() => {
