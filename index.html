@@ -133,19 +133,19 @@
         }
         .back-to-top-button-container {
             position: fixed;
-            right: 1rem;
-            bottom: 4rem; /* moved up further as requested */
+            left: 50%;
+            transform: translate(-50%, 40px);
+            bottom: 5rem; /* centered and raised */
             z-index: 40;
             opacity: 0;
             pointer-events: none;
-            transform: translateY(40px);
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .back-to-top-button-container[data-visible="true"] {
             opacity: 1;
             pointer-events: auto;
-            transform: translateY(0);
+            transform: translate(-50%, 0);
         }
 
         .back-to-top-button {
