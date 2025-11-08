@@ -793,16 +793,36 @@
         }
 
         element.addEventListener('wheel', (event) => {
-            if (event.ctrlKey || element.scrollHeight <= element.clientHeight) {
-                return;
-            }
+            try {
+                if (event.ctrlKey || element.scrollHeight <= element.clientHeight) {
+                    // Let the event bubble to allow page zoom or normal behavior
+                    return;
+                }
 
-            event.preventDefault();
-            element.scrollBy({
-                top: event.deltaY,
-                left: event.deltaX,
-                behavior: 'smooth'
-            });
+                const deltaY = event.deltaY;
+                const atTop = element.scrollTop === 0;
+                const atBottom = Math.abs(element.scrollTop + element.clientHeight - element.scrollHeight) <= 1;
+
+                // If scrolling up but already at top, allow parent/page to scroll
+                if (deltaY < 0 && atTop) {
+                    return;
+                }
+
+                // If scrolling down but already at bottom, allow parent/page to scroll
+                if (deltaY > 0 && atBottom) {
+                    return;
+                }
+
+                // Otherwise consume the event and perform a smooth scroll inside the container
+                event.preventDefault();
+                element.scrollBy({
+                    top: deltaY,
+                    left: event.deltaX,
+                    behavior: 'smooth'
+                });
+            } catch (err) {
+                // Fallback: do nothing and allow normal scrolling
+            }
         }, { passive: false });
 
         element.dataset.smoothScroll = 'true';
