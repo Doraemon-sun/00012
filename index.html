@@ -576,12 +576,21 @@
         </div>
     </div>
     <div id="certificate-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm px-4">
-        <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
-            <button id="close-certificate-modal" type="button" class="absolute right-3 top-3 rounded-full border border-slate-200 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 transition hover:bg-slate-100">
-                &times;
-            </button>
-            <h2 class="text-xl font-semibold text-slate-900">Chứng chỉ nổi bật</h2>
-            <p class="mt-1 text-sm text-slate-500">Chọn chứng chỉ để xem số liệu và ảnh minh hoạ chi tiết.</p>
+        <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 pt-16 shadow-2xl">
+            <div class="absolute left-3 top-3 flex flex-col gap-2">
+                <button id="certificate-close-button" type="button" class="inline-flex items-center gap-1 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600 transition hover:bg-slate-100" aria-label="Quay lại trang chính">
+                    <span aria-hidden="true">←</span>
+                    <span>Trang chính</span>
+                </button>
+                <button id="certificate-back-button" type="button" class="inline-flex items-center gap-1 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600 transition hover:bg-slate-100 hidden" aria-label="Quay lại danh sách chứng chỉ">
+                    <span aria-hidden="true">←</span>
+                    <span>Quay lại</span>
+                </button>
+            </div>
+            <div id="certificate-overview" class="space-y-2">
+                <h2 class="text-xl font-semibold text-slate-900">Chứng chỉ nổi bật</h2>
+                <p class="text-sm text-slate-500">Chọn chứng chỉ để xem số liệu và ảnh minh hoạ chi tiết.</p>
+            </div>
             <div class="mt-5 space-y-3">
                 <div id="certificate-list" class="grid gap-2"></div>
                 <div id="certificate-detail" class="hidden rounded-2xl border border-slate-200 bg-slate-50 p-4">
@@ -765,7 +774,9 @@
     const projectData = Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
     const skillData = Array.isArray(window.SKILLS) ? window.SKILLS : [];
     const certificateModal = document.getElementById('certificate-modal');
-    const closeCertificateModal = document.getElementById('close-certificate-modal');
+    const certificateCloseButton = document.getElementById('certificate-close-button');
+    const certificateBackButton = document.getElementById('certificate-back-button');
+    const certificateOverview = document.getElementById('certificate-overview');
     const certificateActionTriggers = document.querySelectorAll('[data-action="open-certificates"]');
     const certificateList = document.getElementById('certificate-list');
     const certificateDetail = document.getElementById('certificate-detail');
@@ -1900,33 +1911,42 @@
             });
         };
 
+        const showCertificateListView = () => {
+            certificateOverview?.classList.remove('hidden');
+            certificateList?.classList.remove('hidden');
+            certificateDetail?.classList.add('hidden');
+            certificateBackButton?.classList.add('hidden');
+            updateCertificateSelectionStyles(null);
+            activeCertificateId = null;
+            applyCertificateListOverflow();
+        };
+
+        const showCertificateDetailView = () => {
+            certificateOverview?.classList.add('hidden');
+            certificateList?.classList.add('hidden');
+            certificateDetail?.classList.remove('hidden');
+            certificateBackButton?.classList.remove('hidden');
+        };
+
         const setActiveCertificate = (certificateId) => {
             if (!certificateData.length) {
-                activeCertificateId = null;
-                updateCertificateSelectionStyles(null);
-                certificateDetail?.classList.add('hidden');
+                showCertificateListView();
                 return;
             }
 
             if (!certificateId) {
-                activeCertificateId = null;
-                updateCertificateSelectionStyles(null);
-                certificateDetail?.classList.add('hidden');
+                showCertificateListView();
                 return;
             }
 
             const certificate = certificateData.find((item) => item.id === certificateId);
 
             if (!certificate) {
-                activeCertificateId = null;
-                updateCertificateSelectionStyles(null);
-                certificateDetail?.classList.add('hidden');
+                showCertificateListView();
                 return;
             }
 
             activeCertificateId = certificate.id;
-            certificateDetail?.classList.remove('hidden');
-
             updateCertificateSelectionStyles(certificate.id);
 
             if (certificateName) {
@@ -1971,6 +1991,8 @@
                     certificateImageLink.classList.add('hidden');
                 }
             }
+
+            showCertificateDetailView();
         };
 
         const renderCertificateOptions = () => {
@@ -1980,7 +2002,7 @@
             const newButtons = [];
 
             if (!certificateData.length) {
-                certificateDetail?.classList.add('hidden');
+                showCertificateListView();
                 const emptyState = document.createElement('p');
                 emptyState.className = 'py-4 text-center text-sm text-slate-500';
                 emptyState.textContent = 'Hiện chưa có chứng chỉ nào.';
@@ -2036,13 +2058,7 @@
             if (!certificateModal) return;
 
             renderCertificateOptions();
-
-            if (activeCertificateId) {
-                setActiveCertificate(activeCertificateId);
-            } else {
-                updateCertificateSelectionStyles(null);
-                certificateDetail?.classList.add('hidden');
-            }
+            showCertificateListView();
 
             certificateModal.classList.remove('hidden');
             certificateModal.classList.add('flex');
@@ -2052,6 +2068,7 @@
             if (!certificateModal) return;
             certificateModal.classList.add('hidden');
             certificateModal.classList.remove('flex');
+            showCertificateListView();
         };
 
         const openTestimonialModal = (card) => {
@@ -2294,7 +2311,8 @@
                 hideTestimonialModal();
             }
         });
-        closeCertificateModal?.addEventListener('click', hideCertificateModal);
+    certificateCloseButton?.addEventListener('click', hideCertificateModal);
+    certificateBackButton?.addEventListener('click', showCertificateListView);
         certificateModal?.addEventListener('click', (event) => {
             if (event.target === certificateModal) {
                 hideCertificateModal();
