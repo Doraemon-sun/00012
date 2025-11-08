@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang cá nhân</title>
+    <link rel="icon" type="image/x-icon" href="image/0001/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    .testimonial-track {
+            display: flex;
+            gap: 1rem;
+            animation: marquee 24s linear infinite;
+        }
+        .testimonial-track:hover {
+            animation-play-state: paused;
+        }
+        .testimonial-card {
+            flex: 0 0 260px;
+        }
+        .logo-track {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            animation: logo-marquee 28s linear infinite;
+        }
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+        .logo-track > a {
+            flex: 0 0 auto;
+        }
+        body.nav-tooltips-hidden .nav-tooltip {
+            display: none;
+        }
+        body.reduce-motion .testimonial-track {
+            animation-play-state: paused !important;
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        @media (max-width: 480px) {
+            .testimonial-card {
+                flex: 0 0 220px;
+            }
+        }
+        @keyframes logo-marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .peek-scroll {
+            position: relative;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            display: flex;
+            flex-direction: column;
+        }
+        .peek-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .peek-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(100, 116, 139, 0.35);
+            border-radius: 9999px;
+        }
+        .peek-scroll::after {
+            content: '';
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: block;
+            height: var(--peek-gradient-height, 64px);
+            margin-top: auto;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0),
+                var(--peek-bg, rgba(255, 255, 255, 0.95))
+            );
+            transition: opacity 0.2s ease;
+            opacity: 1;
+            z-index: 1;
+        }
+        .peek-scroll[data-peek-at-bottom="true"]::after {
+            opacity: 0;
+        }
+        .reveal-target {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .reveal-target[data-reveal-visible="true"] {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        body.reduce-motion .reveal-target {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
+        .typing-text::after {
+            content: '|';
+            display: inline-block;
+            margin-left: 0.2rem;
+            color: #0f172a;
+            animation: typing-caret 1s steps(1, end) infinite;
+        }
+        @keyframes typing-caret {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        body.reduce-motion .typing-text::after {
+            animation: none;
+            opacity: 0;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .logo-track {
+                animation: none !important;
+            }
+        }
+        .ios-notification {
+            position: fixed;
+            top: calc(env(safe-area-inset-top, 0px) + 1rem);
+            right: 1.25rem;
+            z-index: 70;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            max-width: min(92vw, 340px);
+            padding: 0.85rem 1rem 0.9rem 1rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 22px 45px -20px rgba(15, 23, 42, 0.45), 0 12px 26px -16px rgba(15, 23, 42, 0.35);
+            backdrop-filter: blur(18px);
+            transform: translateX(calc(100% + 2rem));
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.24, 0.82, 0.25, 1), opacity 0.6s ease;
+            pointer-events: none;
+        }
+        .ios-notification[data-visible="true"] {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .ios-notification__icon {
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #34d399, #22d3ee);
+            color: #ffffff;
+            box-shadow: 0 16px 26px -18px rgba(14, 165, 233, 0.8);
+        }
+        .ios-notification__icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        .ios-notification__content {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        .ios-notification__title {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #111827;
+        }
+        .ios-notification__message {
+            margin: 0.25rem 0 0.5rem;
+            font-size: 0.8rem;
+            line-height: 1.45;
+            color: #475569;
+        }
+        .ios-notification__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+        .ios-notification__chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(13, 148, 136, 0.18);
+            background: rgba(13, 148, 136, 0.12);
+            color: #0f766e;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .ios-notification__chip:hover {
+            background: rgba(13, 148, 136, 0.22);
+            color: #0d9488;
+        }
+        .ios-notification__close {
+            position: absolute;
+            top: 0.4rem;
+            right: 0.45rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 9999px;
+            background: transparent;
+            color: #475569;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .ios-notification__close svg {
+            width: 16px;
+            height: 16px;
+        }
+        .ios-notification__close:hover {
+            background: rgba(148, 163, 184, 0.22);
+            color: #1f2937;
+        }
+        @media (max-width: 640px) {
+            .ios-notification {
+                right: 1rem;
+                left: auto;
+                width: min(88vw, 320px);
+                top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
+                transform: translateX(calc(100% + 1.5rem));
+            }
+            .ios-notification[data-visible="true"] {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col items-center p-4 pt-4">
+    <div id="review-notice" class="ios-notification" role="alert" aria-live="assertive" aria-hidden="true">
+        <div class="ios-notification__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5h-1l-4.5 3v-4a8.5 8.5 0 1 1 14-7.5z" />
+                <path d="M8.5 10.5h7" />
+                <path d="M8.5 14h4" />
+            </svg>
+        </div>
+        <div class="ios-notification__content">
+            <p class="ios-notification__title">Bạn muốn để lại đánh giá?</p>
+            <p class="ios-notification__message">Khách hàng vui lòng liên hệ qua Zalo hoặc SMS để gửi phản hồi và lời nhận xét nhé.</p>
+            <div class="ios-notification__actions" role="group" aria-label="Kênh liên hệ">
+                <a href="https://zalo.me/yourusername" target="_blank" rel="noopener" class="ios-notification__chip">Chat Zalo</a>
+                <a href="sms:+84123456789" class="ios-notification__chip">Gửi SMS</a>
+            </div>
+        </div>
+        <button id="close-review-notice" type="button" class="ios-notification__close" aria-label="Ẩn thông báo">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 6l8 8M14 6l-8 8" />
+            </svg>
+        </button>
+    </div>
+    <div id="top" class="w-full max-w-lg overflow-hidden">
+    <div class="h-80 rounded-3xl bg-cover bg-center shadow-lg" style="background-image: url('image/0001/hero-background.gif');"></div>
+        <div class="relative flex flex-col items-center -mt-20 pb-32">
+            <img
+                class="w-40 h-40 rounded-full shadow-lg object-cover"
+                src="image/0001/avatar.jpg"
+                alt="Ảnh đại diện"
+                loading="lazy"
+                decoding="async"
+            >
+            <h1 class="mt-4 text-3xl italic font-semibold text-slate-800">Tên người dùng</h1>
+            <p id="hero-typing" class="mt-2 text-lg text-slate-600 typing-text" data-phrases="Nhà thiết kế UI/UX;Chuyên gia trải nghiệm người dùng" aria-live="polite">Nhà thiết kế UI/UX</p>
+            <p class="text-base text-slate-500">TP. Hồ Chí Minh, Việt Nam</p>
+            <div class="mt-4 flex items-center gap-3">
+               
+                <button
+                    id="follow-button"
+                    type="button"
+                    class="relative z-10 flex items-center gap-2 px-3 py-2 overflow-hidden text-base font-medium text-gray-800 bg-gray-50 border-2 border-gray-50 rounded-full shadow-xl backdrop-blur-md isolate group before:absolute before:-z-10 before:h-full before:w-full before:-left-full before:rounded-full before:bg-emerald-500 before:transition-all before:duration-700 before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700 before:content-[''] hover:text-gray-50"
+                >
+                    Theo dõi
+                    <svg
+                        class="w-8 h-8 p-2 transition duration-300 ease-linear transform rotate-45 border border-gray-700 rounded-full group-hover:rotate-90 group-hover:bg-gray-50 group-hover:border-none"
+                        viewBox="0 0 16 19"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"
+                        ></path>
+                    </svg>
+                </button>
+            
+                <button
+                    id="message-button"
+                    type="button"
+                    class="relative bottom-0 z-10 flex items-center justify-center gap-2 px-6 py-3 overflow-hidden text-xs font-black text-white uppercase transition duration-700 ease-in-out bg-black border border-black rounded-full group hover:bg-white hover:text-black focus:bg-white focus:text-black isolation-auto active:scale-95 before:absolute before:-left-full before:-z-10 before:h-full before:w-full before:rounded-full before:bg-white before:transition-all before:duration-700 before:content-[''] before:hover:left-0 before:hover:w-full before:hover:scale-150 before:hover:duration-700"
+                >
+                    <span class="truncate transition duration-300 ease-in-out group-active:-translate-x-96 group-focus:translate-x-96">Nhắn tin</span>
+                    <div class="absolute flex flex-row items-center justify-center gap-2 transition duration-300 ease-in-out -translate-x-96 group-active:translate-x-0 group-focus:translate-x-0">
+                        <div class="size-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                        Đang gửi...
+                    </div>
+                    <svg
+                        class="w-4 h-4 transition duration-700 ease-in-out fill-white group-hover:fill-black group-hover:translate-x-0 group-active:translate-x-96 group-active:duration-0 group-focus:translate-x-96 group-focus:fill-black"
+                        stroke="currentColor"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="m476.59 227.05-.16-.07L49.35 49.84A23.56 23.56 0 0 0 27.14 52 24.65 24.65 0 0 0 16 72.59v113.29a24 24 0 0 0 19.52 23.57l232.93 43.07a4 4 0 0 1 0 7.86L35.53 303.45A24 24 0 0 0 16 327v113.31A23.57 23.57 0 0 0 26.59 460a23.94 23.94 0 0 0 13.22 4 24.55 24.55 0 0 0 9.52-1.93L476.4 285.94l.19-.09a32 32 0 0 0 0-58.8z"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-6 w-full overflow-hidden">
+                <div class="logo-track" aria-label="Mạng xã hội">
+                    <a href="https://www.instagram.com/yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Instagram</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 16 16" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-pink-500" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/your.page.username" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Facebook</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.658-4.788 1.325 0 2.464.099 2.797.143v3.24l-1.92.001c-1.504 0-1.796.715-1.796 1.764v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Facebook</span>
+                    </a>
+                    <a href="https://m.me/your.page.username" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Messenger</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-indigo-500" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.488 2 2 6.004 2 11.203c0 2.756 1.098 5.136 2.896 6.816.15.14.242.332.25.538l.052 1.68a.75.75 0 0 0 1.095.66l1.78-.953a.86.86 0 0 1 .61-.06c.963.276 1.992.424 3.117.424 5.512 0 10-4.004 10-9.203C22 6.004 17.512 2 12 2zm5.028 6.887-2.66 4.228a1.25 1.25 0 0 1-1.8.36l-1.93-1.45a.5.5 0 0 0-.6 0l-2.727 2.079c-.35.267-.82-.154-.58-.53l2.66-4.228a1.25 1.25 0 0 1 1.8-.36l1.93 1.45a.5.5 0 0 0 .6 0l2.727-2.08c.35-.266.82.155.58.531z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Messenger</span>
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">GitHub</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 16 16" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-slate-900" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">LinkedIn</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-sky-600" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.98 3.5a2.13 2.13 0 1 1 0 4.26 2.13 2.13 0 0 1 0-4.26zM3 9h3.96v12H3zm6.12 0H13v1.65h.05c.55-1.05 1.9-2.16 3.91-2.16 4.19 0 4.97 2.76 4.97 6.35V21H17v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-3.96z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">LinkedIn</span>
+                    </a>
+                    <a href="https://www.threads.net/@yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Threads</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <img src="https://img.icons8.com/?size=256&id=ikThuZ5WmSYz&format=png" alt="Threads logo" class="h-8 w-8 transition duration-300 group-hover:opacity-80" loading="lazy" decoding="async" />
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Threads</span>
+                    </a>
+                    <a href="https://www.instagram.com/yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Instagram</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 16 16" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-pink-500" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/your.page.username" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Facebook</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-blue-600" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413 c0-3.1 1.893-4.788 4.658-4.788 1.325 0 2.464.099 2.797.143v3.24l-1.92.001c-1.504 0-1.796.715-1.796 1.764v2.313h3.587l-.467 3.622 h-3.12V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Facebook</span>
+                    </a>
+                    <a href="https://m.me/your.page.username" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Messenger</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-indigo-500" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.488 2 2 6.004 2 11.203c0 2.756 1.098 5.136 2.896 6.816.15.14.242.332.25.538l.052 1.68a.75.75 0 0 0 1.095.66l1.78-.953a.86.86 0 0 1 .61-.06c.963.276 1.992.424 3.117.424 5.512 0 10-4.004 10-9.203C22 6.004 17.512 2 12 2zm5.028 6.887-2.66 4.228a1.25 1.25 0 0 1-1.8.36l-1.93-1.45a.5.5 0 0 0-.6 0l-2.727 2.079c-.35.267-.82-.154-.58-.53l2.66-4.228a1.25 1.25 0 0 1 1.8-.36l1.93 1.45a.5.5 0 0 0 .6 0l2.727-2.08c.35-.266.82.155.58.531z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Messenger</span>
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">GitHub</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 16 16" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-slate-900" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">LinkedIn</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 transition duration-300 group-hover:text-sky-600" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.98 3.5a2.13 2.13 0 1 1 0 4.26 2.13 2.13 0 0 1 0-4.26zM3 9h3.96v12H3zm6.12 0H13v1.65h.05c.55-1.05 1.9-2.16 3.91-2.16 4.19 0 4.97 2.76 4.97 6.35V21H17v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-3.96z" />
+                            </svg>
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">LinkedIn</span>
+                    </a>
+                    <a href="https://www.threads.net/@yourusername" target="_blank" rel="noopener" class="group relative inline-block text-slate-600">
+                        <span class="sr-only">Threads</span>
+                        <span class="flex h-14 w-14 items-center justify-center transition duration-300 group-hover:scale-110">
+                            <img src="https://img.icons8.com/?size=256&id=ikThuZ5WmSYz&format=png" alt="Threads logo" class="h-8 w-8 transition duration-300 group-hover:opacity-80" loading="lazy" decoding="async" />
+                        </span>
+                        <span class="pointer-events-none absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 translate-y-2 scale-95 rounded-lg bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">Threads</span>
+                    </a>
+                </div>
+            </div>
+            <section id="gioi-thieu" class="mt-8 w-full max-w-lg text-center leading-relaxed text-slate-600">
+                <h2 id="introduction-title" class="text-xl font-semibold text-slate-800">Giới thiệu</h2>
+                <p id="introduction-subtitle" class="mt-2 text-sm text-slate-500 hidden"></p>
+                <div id="introduction-content" class="mt-3 space-y-3"></div>
+            </section>
+            <section id="loi-danh-gia" class="mt-6 w-full max-w-lg px-2 text-left text-slate-700">
+                <h2 class="text-xl font-semibold text-slate-800">Lời đánh giá</h2>
+                <div class="mt-4 overflow-hidden rounded-2xl p-4">
+                    <div id="testimonial-track" class="testimonial-track" aria-live="polite"></div>
+                </div>
+            </section>
+            <section id="hoc-van" class="mt-8 w-full max-w-lg p-5 text-left text-slate-700">
+                <h2 class="text-xl font-semibold text-slate-800">Học vấn &amp; Chứng chỉ</h2>
+                <div id="education-list" class="mt-5 space-y-5 scroll-smooth"></div>
+            </section>
+            <section id="ky-nang" class="mt-6 w-full max-w-lg p-5 text-left text-slate-700">
+                <h2 class="text-xl font-semibold text-slate-800">Kỹ năng</h2>
+                <p class="mt-2 text-sm text-slate-500">Tổng hợp những kỹ năng chính giúp tôi xây dựng sản phẩm trải nghiệm người dùng trọn vẹn.</p>
+                <div id="skill-list" class="mt-5 grid gap-4 grid-cols-1"></div>
+            </section>
+            <section id="kinh-nghiem" class="mt-6 w-full max-w-lg p-5 text-left text-slate-700">
+                <h2 class="text-xl font-semibold text-slate-800">Kinh nghiệm làm việc</h2>
+                <div id="experience-list" class="mt-5 space-y-5 scroll-smooth"></div>
+            </section>
+            <section id="du-an" class="mt-6 w-full max-w-lg p-5 text-left text-slate-700">
+                <h2 class="text-xl font-semibold text-slate-800">Công trình &amp; Dự án</h2>
+                <p class="mt-2 text-sm text-slate-500">Một vài dự án tiêu biểu thể hiện khả năng dẫn dắt sản phẩm từ ý tưởng đến triển khai thực tế.</p>
+                <div id="project-list" class="mt-5 space-y-5 scroll-smooth"></div>
+            </section>
+        </div>
+    </div>
+    <nav class="fixed bottom-4 left-1/2 z-40 -translate-x-1/2">
+        <div class="flex items-center gap-2">
+            <a href="#top" class="group relative flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-white/90 text-slate-500 shadow-md shadow-emerald-500/10 backdrop-blur-sm transition duration-150 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300" aria-label="Trang chủ">
+                <span class="sr-only">Trang chủ</span>
+                <svg class="h-6 w-6 transition-transform duration-150 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a.75.75 0 0 1 1.06 0L21.75 12M4.5 9.75v10.5A1.5 1.5 0 0 0 6 21.75h4.5v-6h3v6H18a1.5 1.5 0 0 0 1.5-1.5V9.75" />
+                </svg>
+                <span class="nav-tooltip pointer-events-none absolute -top-10 left-1/2 z-20 -translate-x-1/2 translate-y-2 origin-bottom scale-90 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:scale-100 group-focus-visible:opacity-100">Trang</span>
+            </a>
+            <button type="button" data-action="open-blog" class="group relative flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-white/90 text-slate-500 shadow-md shadow-emerald-500/10 backdrop-blur-sm transition duration-150 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300" aria-label="Blog">
+                <span class="sr-only">Blog</span>
+                <svg class="h-6 w-6 transition-transform duration-150 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5.25C3 4.007 4.007 3 5.25 3h13.5C19.993 3 21 4.007 21 5.25v13.5A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 18.75V5.25z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h9m-9 4.5h5.25M7.5 16.5h6" />
+                </svg>
+                <span class="nav-tooltip pointer-events-none absolute -top-10 left-1/2 z-20 -translate-x-1/2 translate-y-2 origin-bottom scale-90 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:scale-100 group-focus-visible:opacity-100">Blog</span>
+            </button>
+            <button type="button" data-action="open-certificates" class="group relative flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-white/90 text-slate-500 shadow-md shadow-emerald-500/10 backdrop-blur-sm transition duration-150 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300" aria-label="Chứng chỉ">
+                <span class="sr-only">Chứng chỉ</span>
+                <svg class="h-6 w-6 transition-transform duration-150 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m12 14.25-8.955-4.477a.75.75 0 0 1 0-1.346L12 3.75l8.955 4.677a.75.75 0 0 1 0 1.346L12 14.25z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 14.25v7.5m6.75-10.5v3.356a2.25 2.25 0 0 1-1.126 1.962l-5.25 2.625a2.25 2.25 0 0 1-2.048 0l-5.25-2.625a2.25 2.25 0 0 1-1.126-1.962V11.25" />
+                </svg>
+                <span class="nav-tooltip pointer-events-none absolute -top-10 left-1/2 z-20 -translate-x-1/2 translate-y-2 origin-bottom scale-90 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:scale-100 group-focus-visible:opacity-100">Thông tin khác</span>
+            </button>
+            <button type="button" data-action="open-message" class="group relative flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-white/90 text-slate-500 shadow-md shadow-emerald-500/10 backdrop-blur-sm transition duration-150 hover:text-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300" aria-label="Liên hệ">
+                <span class="sr-only">Liên hệ</span>
+                <svg class="h-6 w-6 transition-transform duration-150 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75a6 6 0 0 1 6-6h7.5a4.5 4.5 0 0 1 0 9h-1.125a.75.75 0 0 0-.53.22l-3.22 3.279a.75.75 0 0 1-1.28-.53v-2.719H8.25a6 6 0 0 1-6-6z" />
+                </svg>
+                <span class="nav-tooltip pointer-events-none absolute -top-10 left-1/2 z-20 -translate-x-1/2 translate-y-2 origin-bottom scale-90 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:scale-100 group-focus-visible:opacity-100">Nhắn</span>
+            </button>
+        </div>
+    </nav>
+    <div id="testimonial-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+            <button id="close-testimonial-modal" type="button" class="absolute right-3 top-3 rounded-full border border-slate-200 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 transition hover:bg-slate-100">
+                &times;
+            </button>
+            <h2 class="text-xl font-semibold text-slate-900">Chi tiết lời đánh giá</h2>
+            <div class="mt-3 space-y-1 text-sm text-slate-500">
+                <p id="testimonial-modal-name" class="text-base font-semibold text-slate-900"></p>
+                <p id="testimonial-modal-meta"></p>
+                <p id="testimonial-modal-time" class="text-xs font-semibold uppercase tracking-wide text-emerald-600"></p>
+            </div>
+            <p id="testimonial-modal-content" class="mt-4 text-sm leading-relaxed text-slate-600"></p>
+        </div>
+    </div>
+    <div id="message-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+            <button id="close-message-modal" type="button" class="absolute right-3 top-3 rounded-full border border-slate-200 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 transition hover:bg-slate-100">
+                &times;
+            </button>
+            <h2 class="text-xl font-semibold text-slate-900">Chọn kênh liên hệ</h2>
+            <p class="mt-1 text-sm text-slate-500">Vui lòng chọn một phương thức nhắn tin bên dưới để tiếp tục trao đổi.</p>
+            <div class="mt-6 flex justify-center gap-8">
+                <a href="https://zalo.me" target="_blank" rel="noopener" class="group relative flex flex-col items-center text-slate-700">
+                    <span class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-sky-400 bg-white shadow transition duration-200 hover:scale-110 hover:border-sky-500">
+                        <img src="https://img.icons8.com/?size=128&id=0m71tmRjlxEe&format=png" alt="Biểu tượng Zalo" class="h-12 w-12 object-contain" loading="lazy" decoding="async">
+                    </span>
+                    <span class="absolute -top-14 left-1/2 z-20 origin-bottom -translate-x-1/2 scale-0 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                        Zalo
+                    </span>
+                </a>
+                <a href="https://m.me" target="_blank" rel="noopener" class="group relative flex flex-col items-center text-slate-700">
+                    <span class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-indigo-400 bg-white shadow transition duration-200 hover:scale-110 hover:border-indigo-500">
+                        <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" class="h-10 w-10 text-indigo-500">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </span>
+                    <span class="absolute -top-14 left-1/2 z-20 origin-bottom -translate-x-1/2 scale-0 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                        Messenger
+                    </span>
+                </a>
+                <a href="sms:+84123456789" class="group relative flex flex-col items-center text-slate-700">
+                    <span class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-emerald-400 bg-white shadow transition duration-200 hover:scale-110 hover:border-emerald-500">
+                        <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" class="h-10 w-10 text-emerald-500">
+                            <path d="M4 4h3l1 4-2.5 1a11 11 0 0 0 8.5 8.5l1-2.5 4 1v3a2 2 0 0 1-2 2h-1C8.82 21 3 15.18 3 8V7a3 3 0 0 1 3-3z"></path>
+                        </svg>
+                    </span>
+                    <span class="absolute -top-14 left-1/2 z-20 origin-bottom -translate-x-1/2 scale-0 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                        SMS
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="skill-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/45 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+            <button id="close-skill-modal" type="button" class="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-sm font-semibold text-slate-500 transition hover:bg-slate-100" aria-label="Đóng chi tiết kỹ năng">
+                &times;
+            </button>
+            <div class="space-y-3">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-emerald-500">Chi tiết kỹ năng</span>
+                    <h2 id="skill-modal-title" class="mt-1 text-xl font-semibold text-slate-900"></h2>
+                </div>
+                <p id="skill-modal-description" class="text-sm leading-relaxed text-slate-600"></p>
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Năng lực liên quan</p>
+                    <div id="skill-modal-chips" class="mt-2 flex flex-wrap gap-2" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="certificate-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+            <button id="close-certificate-modal" type="button" class="absolute right-3 top-3 rounded-full border border-slate-200 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 transition hover:bg-slate-100">
+                &times;
+            </button>
+            <h2 class="text-xl font-semibold text-slate-900">Chứng chỉ nổi bật</h2>
+            <p class="mt-1 text-sm text-slate-500">Chọn chứng chỉ để xem số liệu và ảnh minh hoạ chi tiết.</p>
+            <div class="mt-5 space-y-3">
+                <div id="certificate-list" class="grid gap-2"></div>
+                <div id="certificate-detail" class="hidden rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                    <div class="space-y-1">
+                        <p id="certificate-name" class="text-lg font-semibold text-slate-900"></p>
+                        <p id="certificate-issuer" class="text-xs font-semibold uppercase tracking-wide text-emerald-600"></p>
+                    </div>
+                    <p id="certificate-description" class="mt-3 text-sm text-slate-600"></p>
+                    <ul id="certificate-stats" class="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-600"></ul>
+                    <a id="certificate-image-link" href="#" target="_blank" rel="noopener" class="mt-4 block overflow-hidden rounded-xl border border-slate-200">
+                        <img id="certificate-image" src="" alt="" loading="lazy" decoding="async" class="h-48 w-full object-cover">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="blog-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+            <button id="close-blog-modal" type="button" class="absolute right-3 top-3 rounded-full border border-slate-200 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 transition hover:bg-slate-100">
+                &times;
+            </button>
+            <div class="space-y-5">
+                <div class="text-center">
+                    <h2 class="text-lg font-semibold text-slate-900">Blog sắp ra mắt</h2>
+                    <p class="mt-1 text-xs text-slate-500">Xem trước những bài viết đang được xây dựng.</p>
+                </div>
+                <div id="blog-grid" class="grid gap-4 grid-cols-1"></div>
+            </div>
+        </div>
+    </div>
+    <div id="blog-album-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm px-4">
+        <div class="relative w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
+            <button id="close-blog-album-modal" type="button" class="absolute right-4 top-4 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 transition hover:bg-slate-100">
+                &times;
+            </button>
+            <div class="space-y-4">
+                <div>
+                    <h3 id="blog-album-title" class="text-lg font-semibold text-slate-900"></h3>
+                    <p id="blog-album-description" class="mt-1 text-xs text-slate-500"></p>
+                </div>
+                <div id="blog-album-grid" class="grid gap-3 sm:grid-cols-2"></div>
+            </div>
+        </div>
+    </div>
+    <div id="blog-image-viewer" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 backdrop-blur-sm px-4">
+        <button id="close-blog-image-viewer" type="button" class="absolute left-4 top-4 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-white/20">
+            Quay lại
+        </button>
+    <img id="blog-image-viewer-img" src="" alt="" loading="lazy" decoding="async" class="max-h-[calc(100vh-5rem)] w-auto max-w-full rounded-3xl border border-white/20 object-contain shadow-2xl">
+    </div>
+    <script src="introduction-data.js"></script>
+    <script src="testimonials-data.js"></script>
+    <script src="certificates-data.js"></script>
+    <script src="education-data.js"></script>
+    <script src="experiences-data.js"></script>
+    <script src="projects-data.js"></script>
+    <script src="skills-data.js"></script>
+    <script src="blog-data.js"></script>
+    <script>
+    // Handles showing and hiding the professional contact modal.
+        const messageBtn = document.getElementById('message-button');
+        const messageModal = document.getElementById('message-modal');
+        const closeMessageModal = document.getElementById('close-message-modal');
+        const followBtn = document.getElementById('follow-button');
+    const reviewNotice = document.getElementById('review-notice');
+    const closeReviewNotice = document.getElementById('close-review-notice');
+    const testimonialModal = document.getElementById('testimonial-modal');
+    const closeTestimonialModal = document.getElementById('close-testimonial-modal');
+    const testimonialModalContent = document.getElementById('testimonial-modal-content');
+    const testimonialModalName = document.getElementById('testimonial-modal-name');
+    const testimonialModalMeta = document.getElementById('testimonial-modal-meta');
+    const testimonialModalTime = document.getElementById('testimonial-modal-time');
+    const testimonialTrack = document.getElementById('testimonial-track');
+    const testimonialData = Array.isArray(window.TESTIMONIALS) ? window.TESTIMONIALS : [];
+    const messageActionTriggers = document.querySelectorAll('[data-action="open-message"]');
+    const blogModal = document.getElementById('blog-modal');
+    const closeBlogModal = document.getElementById('close-blog-modal');
+    const blogActionTriggers = document.querySelectorAll('[data-action="open-blog"]');
+    const blogGrid = document.getElementById('blog-grid');
+    const blogAlbumModal = document.getElementById('blog-album-modal');
+    const closeBlogAlbumModal = document.getElementById('close-blog-album-modal');
+    const blogAlbumTitle = document.getElementById('blog-album-title');
+    const blogAlbumDescription = document.getElementById('blog-album-description');
+    const blogAlbumGrid = document.getElementById('blog-album-grid');
+    const blogImageViewer = document.getElementById('blog-image-viewer');
+    const closeBlogImageViewer = document.getElementById('close-blog-image-viewer');
+    const blogImageViewerImg = document.getElementById('blog-image-viewer-img');
+    const skillModal = document.getElementById('skill-modal');
+    const closeSkillModal = document.getElementById('close-skill-modal');
+    const skillModalTitle = document.getElementById('skill-modal-title');
+    const skillModalDescription = document.getElementById('skill-modal-description');
+    const skillModalChips = document.getElementById('skill-modal-chips');
+    const introductionTitle = document.getElementById('introduction-title');
+    const introductionSubtitle = document.getElementById('introduction-subtitle');
+    const introductionContent = document.getElementById('introduction-content');
+    const educationList = document.getElementById('education-list');
+    const experienceList = document.getElementById('experience-list');
+    const projectList = document.getElementById('project-list');
+    const skillList = document.getElementById('skill-list');
+
+    const setImageSourceWithFallback = (imgEl, preferredSrc, fallbackSrc) => {
+        if (!imgEl) {
+            return;
+        }
+
+        const primarySrc = preferredSrc || fallbackSrc || '';
+        imgEl.onerror = null;
+
+        if (fallbackSrc && primarySrc && primarySrc !== fallbackSrc) {
+            imgEl.onerror = () => {
+                imgEl.onerror = null;
+                imgEl.src = fallbackSrc;
+            };
+        }
+
+        imgEl.src = primarySrc;
+    };
+
+    const enableSmoothScroll = (element) => {
+        if (!element || element.dataset.smoothScroll === 'true') {
+            return;
+        }
+
+        element.addEventListener('wheel', (event) => {
+            if (event.ctrlKey || element.scrollHeight <= element.clientHeight) {
+                return;
+            }
+
+            event.preventDefault();
+            element.scrollBy({
+                top: event.deltaY,
+                left: event.deltaX,
+                behavior: 'smooth'
+            });
+        }, { passive: false });
+
+        element.dataset.smoothScroll = 'true';
+    };
+
+    enableSmoothScroll(blogGrid);
+    enableSmoothScroll(blogAlbumGrid);
+    enableSmoothScroll(educationList);
+    enableSmoothScroll(experienceList);
+    enableSmoothScroll(projectList);
+    enableSmoothScroll(skillList);
+    const showReviewNotice = () => {
+        if (!reviewNotice) {
+            return;
+        }
+
+        reviewNotice.setAttribute('aria-hidden', 'false');
+        reviewNotice.dataset.visible = 'true';
+    };
+
+    const hideReviewNotice = () => {
+        if (!reviewNotice) {
+            return;
+        }
+
+        reviewNotice.removeAttribute('data-visible');
+        reviewNotice.setAttribute('aria-hidden', 'true');
+    };
+
+    const scheduleReviewNotice = () => {
+        if (!reviewNotice) {
+            return;
+        }
+
+        window.setTimeout(() => {
+            if (!reviewNotice.dataset.visible) {
+                showReviewNotice();
+            }
+        }, 800);
+    };
+    const blogItems = Array.isArray(window.BLOG_ITEMS) ? window.BLOG_ITEMS : [];
+    const introductionData = (typeof window.INTRODUCTION === 'object' && window.INTRODUCTION !== null)
+        ? window.INTRODUCTION
+        : null;
+    const educationData = Array.isArray(window.EDUCATION) ? window.EDUCATION : [];
+    const experienceData = Array.isArray(window.EXPERIENCES) ? window.EXPERIENCES : [];
+    const projectData = Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
+    const skillData = Array.isArray(window.SKILLS) ? window.SKILLS : [];
+    const certificateModal = document.getElementById('certificate-modal');
+    const closeCertificateModal = document.getElementById('close-certificate-modal');
+    const certificateActionTriggers = document.querySelectorAll('[data-action="open-certificates"]');
+    const certificateList = document.getElementById('certificate-list');
+    const certificateDetail = document.getElementById('certificate-detail');
+    const certificateName = document.getElementById('certificate-name');
+    const certificateIssuer = document.getElementById('certificate-issuer');
+    const certificateDescription = document.getElementById('certificate-description');
+    const certificateStats = document.getElementById('certificate-stats');
+    const certificateImage = document.getElementById('certificate-image');
+    const certificateImageLink = document.getElementById('certificate-image-link');
+    const certificateData = Array.isArray(window.CERTIFICATES) ? window.CERTIFICATES : [];
+    let activeCertificateId = null;
+    let testimonialCards = [];
+    let skillCards = [];
+
+    const revealRegistry = new Set();
+    let revealObserver = null;
+
+    const prefersReducedMotion = () => document.body.classList.contains('reduce-motion');
+
+    const heroTypingTarget = document.getElementById('hero-typing');
+    const heroTypingPhrases = (() => {
+        if (!heroTypingTarget) {
+            return [];
+        }
+
+        const raw = heroTypingTarget.dataset?.phrases ?? '';
+        const parsed = raw
+            .split(';')
+            .map((phrase) => phrase.trim())
+            .filter(Boolean);
+
+        if (parsed.length) {
+            return parsed;
+        }
+
+        const fallback = heroTypingTarget.textContent?.trim();
+        return fallback ? [fallback] : [];
+    })();
+
+    let heroTypingIndex = 0;
+    let heroTypingCharIndex = 0;
+    let heroTypingDeleting = false;
+    let heroTypingTimeoutId = null;
+
+    const stopHeroTyping = () => {
+        if (heroTypingTimeoutId !== null) {
+            window.clearTimeout(heroTypingTimeoutId);
+            heroTypingTimeoutId = null;
+        }
+    };
+
+    const initHeroTyping = () => {
+        if (!heroTypingTarget || !heroTypingPhrases.length) {
+            return;
+        }
+
+        stopHeroTyping();
+
+        if (prefersReducedMotion()) {
+            heroTypingTarget.textContent = heroTypingPhrases[0];
+            heroTypingTarget.classList.remove('typing-text');
+            return;
+        }
+
+        heroTypingTarget.classList.add('typing-text');
+        heroTypingIndex = heroTypingIndex % heroTypingPhrases.length;
+        heroTypingCharIndex = 0;
+        heroTypingDeleting = false;
+        heroTypingTarget.textContent = '';
+
+        const tick = () => {
+            if (!heroTypingTarget) {
+                stopHeroTyping();
+                return;
+            }
+
+            const phrase = heroTypingPhrases[heroTypingIndex] ?? '';
+
+            if (!heroTypingDeleting && heroTypingCharIndex < phrase.length) {
+                heroTypingCharIndex += 1;
+            } else if (heroTypingDeleting && heroTypingCharIndex > 0) {
+                heroTypingCharIndex -= 1;
+            }
+
+            heroTypingTarget.textContent = phrase.slice(0, heroTypingCharIndex);
+
+            let delay = heroTypingDeleting ? 55 : 120;
+
+            if (!heroTypingDeleting && heroTypingCharIndex === phrase.length) {
+                heroTypingDeleting = true;
+                delay = 1400;
+            } else if (heroTypingDeleting && heroTypingCharIndex === 0) {
+                heroTypingDeleting = false;
+                heroTypingIndex = (heroTypingIndex + 1) % heroTypingPhrases.length;
+                delay = 420;
+            }
+
+            heroTypingTimeoutId = window.setTimeout(tick, delay);
+        };
+
+        heroTypingTimeoutId = window.setTimeout(tick, 360);
+    };
+
+    const ensureRevealObserver = () => {
+        if (revealObserver || !('IntersectionObserver' in window)) {
+            return revealObserver;
+        }
+
+        revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (prefersReducedMotion()) {
+                    entry.target.dataset.revealVisible = 'true';
+                    return;
+                }
+
+                entry.target.dataset.revealVisible = entry.isIntersecting ? 'true' : 'false';
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        return revealObserver;
+    };
+
+    const registerRevealTargets = (elements) => {
+        if (!elements) return;
+        const items = Array.isArray(elements) ? elements : Array.from(elements);
+        if (!items.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+            items.forEach((el) => {
+                if (!(el instanceof HTMLElement)) return;
+                el.classList.add('reveal-target');
+                el.dataset.revealVisible = 'true';
+            });
+            return;
+        }
+
+        const observer = ensureRevealObserver();
+        if (!observer) return;
+
+        items.forEach((el) => {
+            if (!(el instanceof HTMLElement) || revealRegistry.has(el)) return;
+            revealRegistry.add(el);
+            el.classList.add('reveal-target');
+            el.dataset.revealVisible = prefersReducedMotion() ? 'true' : 'false';
+            observer.observe(el);
+        });
+    };
+
+    const handleMotionPreferenceChange = () => {
+        initHeroTyping();
+
+        if (!revealRegistry.size) return;
+
+        if (prefersReducedMotion()) {
+            revealRegistry.forEach((el) => {
+                el.dataset.revealVisible = 'true';
+            });
+            return;
+        }
+
+        if (!('IntersectionObserver' in window)) return;
+        const observer = ensureRevealObserver();
+        if (!observer) return;
+
+        revealRegistry.forEach((el) => {
+            observer.unobserve(el);
+            el.dataset.revealVisible = 'false';
+            observer.observe(el);
+        });
+    };
+
+        const openModal = () => {
+            messageModal.classList.remove('hidden');
+            messageModal.classList.add('flex');
+        };
+
+        const hideModal = () => {
+            messageModal.classList.add('hidden');
+            messageModal.classList.remove('flex');
+        };
+
+        const openBlogModal = () => {
+            if (!blogModal) return;
+            renderBlogItems();
+            blogModal.classList.remove('hidden');
+            blogModal.classList.add('flex');
+        };
+
+        const hideBlogModal = () => {
+            if (!blogModal) return;
+            blogModal.classList.add('hidden');
+            blogModal.classList.remove('flex');
+        };
+
+        const hideBlogAlbumModal = () => {
+            if (!blogAlbumModal) return;
+            hideBlogImageViewer();
+            blogAlbumModal.classList.add('hidden');
+            blogAlbumModal.classList.remove('flex');
+        };
+
+        const detachPeekScroll = (container) => {
+            if (!container) return;
+            if (container._peekScrollHandler) {
+                container.removeEventListener('scroll', container._peekScrollHandler);
+                container._peekScrollHandler = null;
+            }
+        };
+
+        const updatePeekScrollIndicators = (container) => {
+            if (!container) return;
+            const atBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 1;
+            container.dataset.peekAtBottom = atBottom ? 'true' : 'false';
+        };
+
+        const attachPeekScroll = (container) => {
+            if (!container) return;
+            detachPeekScroll(container);
+            const handler = () => updatePeekScrollIndicators(container);
+            container._peekScrollHandler = handler;
+            container.addEventListener('scroll', handler, { passive: true });
+            handler();
+        };
+
+        const renderIntroduction = () => {
+            if (!introductionContent) {
+                return;
+            }
+
+            introductionContent.innerHTML = '';
+            const nodesToReveal = [];
+
+            if (!introductionData) {
+                if (introductionSubtitle) {
+                    introductionSubtitle.textContent = '';
+                    introductionSubtitle.classList.add('hidden');
+                }
+
+                const fallback = document.createElement('p');
+                fallback.className = 'text-sm text-slate-500';
+                fallback.textContent = 'Chưa có nội dung giới thiệu.';
+                introductionContent.appendChild(fallback);
+                registerRevealTargets([fallback]);
+                return;
+            }
+
+            if (introductionTitle && introductionData.title) {
+                introductionTitle.textContent = introductionData.title;
+            }
+
+            if (introductionSubtitle) {
+                if (introductionData.subtitle) {
+                    introductionSubtitle.textContent = introductionData.subtitle;
+                    introductionSubtitle.classList.remove('hidden');
+                } else {
+                    introductionSubtitle.textContent = '';
+                    introductionSubtitle.classList.add('hidden');
+                }
+            }
+
+            const paragraphs = Array.isArray(introductionData.paragraphs)
+                ? introductionData.paragraphs.filter((text) => typeof text === 'string' && text.trim().length)
+                : [];
+
+            if (paragraphs.length === 0 && introductionData.description) {
+                paragraphs.push(introductionData.description);
+            }
+
+            if (paragraphs.length === 0) {
+                const fallback = document.createElement('p');
+                fallback.className = 'text-sm text-slate-500';
+                fallback.textContent = 'Chưa có nội dung giới thiệu.';
+                introductionContent.appendChild(fallback);
+                registerRevealTargets([fallback]);
+                return;
+            }
+
+            paragraphs.forEach((paragraph) => {
+                const p = document.createElement('p');
+                p.className = 'text-base leading-relaxed text-slate-600';
+                p.textContent = paragraph.trim();
+                introductionContent.appendChild(p);
+                nodesToReveal.push(p);
+            });
+
+            registerRevealTargets(nodesToReveal);
+        };
+
+        const resetPeekOverflow = (container) => {
+            if (!container) return;
+            detachPeekScroll(container);
+            container.classList.remove('peek-scroll', 'pr-1');
+            container.removeAttribute('data-peek-at-bottom');
+            container.style.removeProperty('max-height');
+            container.style.removeProperty('--peek-bg');
+            container.style.removeProperty('--peek-gradient-height');
+        };
+
+        const applyPeekOverflow = (container, options = {}) => {
+            if (!container) return;
+
+            const {
+                minItems = 2,
+                peekRatio = 0.25,
+                minPeek = 24,
+                maxPeek = 72,
+                gradientBg = 'rgba(255, 255, 255, 0.95)'
+            } = options;
+
+            resetPeekOverflow(container);
+
+            const children = Array.from(container.children).filter((child) => child instanceof HTMLElement);
+            if (children.length < minItems) {
+                return;
+            }
+
+            const activatePeek = () => {
+                if (!container.isConnected) {
+                    return;
+                }
+
+                const [first, second] = children;
+                if (!first || !second) {
+                    return;
+                }
+
+                const firstHeight = first.offsetHeight;
+                const secondHeight = second.offsetHeight;
+                if (firstHeight === 0 || secondHeight === 0) {
+                    return;
+                }
+
+                const gap = Math.max(second.offsetTop - first.offsetTop - firstHeight, 0);
+                const peekAmount = Math.min(Math.max(secondHeight * peekRatio, minPeek), maxPeek);
+                const totalHeight = firstHeight + gap + peekAmount;
+                const gradientHeight = gap + peekAmount;
+
+                container.style.maxHeight = `${Math.round(totalHeight)}px`;
+                container.style.setProperty('--peek-bg', gradientBg);
+                container.style.setProperty('--peek-gradient-height', `${Math.round(gradientHeight)}px`);
+                container.classList.add('peek-scroll', 'pr-1');
+                container.scrollTop = 0;
+                attachPeekScroll(container);
+            };
+
+            requestAnimationFrame(activatePeek);
+        };
+
+        const applyCertificateListOverflow = () => {
+            if (!certificateList) return;
+
+            const shouldScroll = Array.isArray(certificateData) && certificateData.length > 2;
+            certificateList.style.maxHeight = shouldScroll ? '12rem' : '';
+            certificateList.style.overflowY = shouldScroll ? 'auto' : '';
+            certificateList.style.paddingRight = shouldScroll ? '4px' : '';
+        };
+
+        const applyEducationOverflow = () => {
+            if (!educationList) return;
+
+            applyPeekOverflow(educationList, {
+                gradientBg: 'rgba(248, 250, 252, 0.96)'
+            });
+        };
+
+        const applyProjectOverflow = () => {
+            if (!projectList) return;
+
+            applyPeekOverflow(projectList, {
+                gradientBg: 'rgba(255, 255, 255, 0.95)'
+            });
+        };
+
+        const createSkillCard = (skill) => {
+            const card = document.createElement('div');
+            card.className = 'rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:-translate-y-0.5 focus-visible:shadow-lg focus-visible:ring-2 focus-visible:ring-emerald-300 cursor-pointer';
+            card.dataset.skillCard = '';
+            if (skill?.id) {
+                card.dataset.skillId = skill.id;
+            }
+            card.tabIndex = 0;
+            const labelName = skill?.name ?? 'kỹ năng';
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `Xem chi tiết kỹ năng ${labelName}`.trim());
+
+            const titleEl = document.createElement('h3');
+            titleEl.className = 'text-lg font-semibold text-slate-800';
+            titleEl.textContent = skill?.name ?? 'Kỹ năng chưa đặt tên';
+            card.appendChild(titleEl);
+
+            if (skill?.description) {
+                const descEl = document.createElement('p');
+                descEl.className = 'mt-2 text-sm text-slate-600';
+                descEl.textContent = skill.description;
+                card.appendChild(descEl);
+            }
+
+            const capabilities = Array.isArray(skill?.capabilities) ? skill.capabilities.filter(Boolean) : [];
+            const chipList = document.createElement('ul');
+            chipList.className = 'mt-3 flex flex-wrap gap-2 text-xs font-medium text-slate-600';
+
+            if (capabilities.length) {
+                capabilities.forEach((capability) => {
+                    const chip = document.createElement('li');
+                    chip.className = 'rounded-full bg-slate-100 px-3 py-1';
+                    chip.textContent = capability;
+                    chipList.appendChild(chip);
+                });
+            }
+
+            card.appendChild(chipList);
+            return card;
+        };
+
+        const attachSkillCardEvents = () => {
+            skillCards.forEach((card) => {
+                const activate = () => openSkillModal(card);
+                card.addEventListener('click', activate);
+                card.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        activate();
+                    }
+                });
+            });
+        };
+
+        const renderSkillItems = () => {
+            if (!skillList) return;
+
+            skillList.innerHTML = '';
+            const newCards = [];
+
+            if (!Array.isArray(skillData) || skillData.length === 0) {
+                const emptyState = document.createElement('p');
+                emptyState.className = 'rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500';
+                emptyState.textContent = 'Chưa có kỹ năng nào được cập nhật.';
+                skillList.appendChild(emptyState);
+                registerRevealTargets([emptyState]);
+                skillCards = [];
+                return;
+            }
+
+            skillData.forEach((skill) => {
+                const card = createSkillCard(skill);
+                skillList.appendChild(card);
+                newCards.push(card);
+            });
+
+            skillCards = newCards;
+            prepareSkillCardChips();
+            attachSkillCardEvents();
+            registerRevealTargets(newCards);
+        };
+        const renderEducationItems = () => {
+            if (!educationList) return;
+
+            educationList.innerHTML = '';
+            const newArticles = [];
+
+            if (!Array.isArray(educationData) || educationData.length === 0) {
+                const emptyState = document.createElement('p');
+                emptyState.className = 'rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500';
+                emptyState.textContent = 'Chưa có thông tin học vấn.';
+                educationList.appendChild(emptyState);
+                registerRevealTargets([emptyState]);
+                applyEducationOverflow();
+                return;
+            }
+
+            educationData.forEach((item) => {
+                const theme = getAccentTheme(item?.theme);
+
+                const article = document.createElement('article');
+                article.className = 'rounded-2xl border border-slate-200 bg-white p-5 shadow-sm';
+
+                const accentWrapper = document.createElement('div');
+                accentWrapper.className = `border-l-4 ${theme.borderClass} pl-4`;
+
+                const headerBlock = document.createElement('div');
+                headerBlock.className = 'space-y-2';
+
+                const timeframeRow = document.createElement('p');
+                timeframeRow.className = 'flex items-center gap-2 text-sm uppercase tracking-wide text-slate-500';
+                timeframeRow.insertAdjacentHTML('beforeend', createCalendarIconSvg(theme.iconColor));
+                const timeframeSpan = document.createElement('span');
+                const organization = item?.organization ? ` · ${item.organization}` : '';
+                timeframeSpan.textContent = `${item?.timeframe ?? 'N/A'}${organization}`;
+                timeframeRow.appendChild(timeframeSpan);
+                headerBlock.appendChild(timeframeRow);
+
+                if (item?.title) {
+                    const titleRow = document.createElement('p');
+                    titleRow.className = 'flex items-center gap-2 text-base font-medium text-slate-800';
+                    titleRow.insertAdjacentHTML('beforeend', createGraduationIconSvg(theme.iconColor));
+                    const titleSpan = document.createElement('span');
+                    titleSpan.textContent = item.title;
+                    titleRow.appendChild(titleSpan);
+                    headerBlock.appendChild(titleRow);
+                }
+
+                if (item?.location) {
+                    const locationRow = document.createElement('p');
+                    locationRow.className = 'flex items-center gap-2 text-sm text-slate-500';
+                    locationRow.insertAdjacentHTML('beforeend', createLocationIconSvg(theme.iconColor));
+                    const locationSpan = document.createElement('span');
+                    locationSpan.textContent = item.location;
+                    locationRow.appendChild(locationSpan);
+                    headerBlock.appendChild(locationRow);
+                }
+
+                accentWrapper.appendChild(headerBlock);
+
+                const detailBlock = document.createElement('div');
+                detailBlock.className = 'mt-3 space-y-3 text-sm text-slate-600';
+
+                if (item?.summaryBody) {
+                    const summaryCard = document.createElement('div');
+                    summaryCard.className = 'rounded-xl border border-slate-200 bg-slate-50 p-3';
+                    const summaryTitle = document.createElement('p');
+                    summaryTitle.className = 'font-semibold text-slate-700';
+                    summaryTitle.textContent = item?.summaryTitle || 'Tóm tắt';
+                    const summaryParagraph = document.createElement('p');
+                    summaryParagraph.className = 'mt-1';
+                    summaryParagraph.textContent = item.summaryBody;
+                    summaryCard.append(summaryTitle, summaryParagraph);
+                    detailBlock.appendChild(summaryCard);
+                }
+
+                const coreTopics = Array.isArray(item?.corePoints) ? item.corePoints.filter(Boolean) : [];
+                if (coreTopics.length) {
+                    const coreCard = document.createElement('div');
+                    coreCard.className = 'rounded-xl border border-slate-200 bg-slate-50 p-3';
+                    const coreTitle = document.createElement('p');
+                    coreTitle.className = 'font-semibold text-slate-700';
+                    coreTitle.textContent = item?.coreTitle || 'Kiến thức cốt lõi';
+                    const coreList = document.createElement('ul');
+                    coreList.className = 'mt-2 list-disc space-y-1 pl-5';
+                    coreTopics.forEach((topic) => {
+                        const li = document.createElement('li');
+                        li.textContent = topic;
+                        coreList.appendChild(li);
+                    });
+                    coreCard.append(coreTitle, coreList);
+                    detailBlock.appendChild(coreCard);
+                }
+
+                const tags = Array.isArray(item?.tags) ? item.tags.filter(Boolean) : [];
+                if (tags.length) {
+                    const tagWrapper = document.createElement('div');
+                    tagWrapper.className = 'flex flex-wrap gap-2 text-xs font-medium text-slate-600';
+                    tags.forEach((tag) => {
+                        const tagEl = document.createElement('span');
+                        tagEl.className = 'rounded-full bg-slate-100 px-3 py-1';
+                        tagEl.textContent = tag;
+                        tagWrapper.appendChild(tagEl);
+                    });
+                    detailBlock.appendChild(tagWrapper);
+                }
+
+                accentWrapper.appendChild(detailBlock);
+                article.appendChild(accentWrapper);
+                educationList.appendChild(article);
+                newArticles.push(article);
+            });
+
+            applyEducationOverflow();
+            registerRevealTargets(newArticles);
+        };
+
+        const renderProjectItems = () => {
+            if (!projectList) return;
+
+            projectList.innerHTML = '';
+            const newArticles = [];
+
+            if (!Array.isArray(projectData) || projectData.length === 0) {
+                const emptyState = document.createElement('p');
+                emptyState.className = 'rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500';
+                emptyState.textContent = 'Chưa có dự án nào được liệt kê.';
+                projectList.appendChild(emptyState);
+                registerRevealTargets([emptyState]);
+                applyProjectOverflow();
+                return;
+            }
+
+            projectData.forEach((project) => {
+                const theme = getAccentTheme(project?.theme);
+
+                const article = document.createElement('article');
+                article.className = 'rounded-2xl border border-slate-200 bg-white p-5 shadow-sm';
+
+                const headerRow = document.createElement('div');
+                headerRow.className = 'flex flex-wrap items-start justify-between gap-3';
+
+                const headingBlock = document.createElement('div');
+                headingBlock.className = 'space-y-1';
+
+                const nameHeading = document.createElement('h3');
+                nameHeading.className = 'text-lg font-semibold text-slate-900';
+                nameHeading.textContent = project?.name ?? 'Dự án chưa đặt tên';
+                headingBlock.appendChild(nameHeading);
+
+                if (project?.subtitle) {
+                    const subtitle = document.createElement('p');
+                    subtitle.className = 'text-sm text-slate-500';
+                    subtitle.textContent = project.subtitle;
+                    headingBlock.appendChild(subtitle);
+                }
+
+                headerRow.appendChild(headingBlock);
+
+                if (project?.highlight) {
+                    const badge = document.createElement('span');
+                    badge.className = `rounded-full px-3 py-1 text-xs font-semibold ${theme.tagBg} ${theme.tagText}`;
+                    badge.textContent = project.highlight;
+                    headerRow.appendChild(badge);
+                }
+
+                article.appendChild(headerRow);
+
+                if (project?.description) {
+                    const desc = document.createElement('p');
+                    desc.className = 'mt-3 text-sm text-slate-600';
+                    desc.textContent = project.description;
+                    article.appendChild(desc);
+                }
+
+                const achievements = Array.isArray(project?.achievements) ? project.achievements.filter(Boolean) : [];
+                if (achievements.length) {
+                    const list = document.createElement('ul');
+                    list.className = 'mt-3 list-disc space-y-1 pl-5 text-sm text-slate-600';
+                    achievements.forEach((achievement) => {
+                        const li = document.createElement('li');
+                        li.textContent = achievement;
+                        list.appendChild(li);
+                    });
+                    article.appendChild(list);
+                }
+
+                const tags = Array.isArray(project?.tags) ? project.tags.filter(Boolean) : [];
+                if (tags.length) {
+                    const tagWrapper = document.createElement('div');
+                    tagWrapper.className = 'mt-3 flex flex-wrap gap-2 text-xs font-medium';
+                    tags.forEach((tag) => {
+                        const tagEl = document.createElement('span');
+                        tagEl.className = `rounded-full px-3 py-1 ${theme.tagBg} ${theme.tagText}`;
+                        tagEl.textContent = tag;
+                        tagWrapper.appendChild(tagEl);
+                    });
+                    article.appendChild(tagWrapper);
+                }
+
+                projectList.appendChild(article);
+                newArticles.push(article);
+            });
+
+            applyProjectOverflow();
+            registerRevealTargets(newArticles);
+        };
+
+        const ACCENT_THEME_MAP = {
+            emerald: {
+                iconColor: 'text-emerald-500',
+                timeText: 'text-emerald-600',
+                tagBg: 'bg-emerald-100',
+                tagText: 'text-emerald-700',
+                borderClass: 'border-emerald-400'
+            },
+            sky: {
+                iconColor: 'text-sky-500',
+                timeText: 'text-sky-600',
+                tagBg: 'bg-sky-100',
+                tagText: 'text-sky-700',
+                borderClass: 'border-sky-400'
+            }
+        };
+
+        const getAccentTheme = (themeKey) => ACCENT_THEME_MAP[themeKey] || ACCENT_THEME_MAP.emerald;
+
+        const createWorkIconSvg = (colorClass) => `
+            <svg class="h-5 w-5 ${colorClass}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5v-1.5a3.75 3.75 0 0 1 7.5 0v1.5M3 9.75A2.25 2.25 0 0 1 5.25 7.5h13.5A2.25 2.25 0 0 1 21 9.75v7.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25v-7.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.5h18" />
+            </svg>
+        `.trim();
+
+        const createLocationIconSvg = (colorClass) => `
+            <svg class="h-4 w-4 ${colorClass}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-4.35-6-10.5a6 6 0 1 1 12 0C18 16.65 12 21 12 21z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5z" />
+            </svg>
+        `.trim();
+
+        const createCalendarIconSvg = (colorClass) => `
+            <svg class="h-4 w-4 ${colorClass}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v1.5m10.5-1.5V4.5M4.5 7.5h15M5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V7.5A2.25 2.25 0 0 0 18.75 5.25H5.25A2.25 2.25 0 0 0 3 7.5v11.25A2.25 2.25 0 0 0 5.25 21z" />
+            </svg>
+        `.trim();
+
+        const createGraduationIconSvg = (colorClass) => `
+            <svg class="h-4 w-4 ${colorClass}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14.25v7.5m0 0L7.5 18m4.5 3.75 4.5-3.75m.75-11.25v6.726a2.25 2.25 0 0 1-1.009 1.874l-3.741 2.246a2.25 2.25 0 0 1-2.25 0l-3.741-2.246A2.25 2.25 0 0 1 6.75 14.226V7.5m12 0L12 3 5.25 7.5 12 12l6.75-4.5z" />
+            </svg>
+        `.trim();
+
+        const applyExperienceOverflow = () => {
+            if (!experienceList) return;
+
+            applyPeekOverflow(experienceList, {
+                gradientBg: 'rgba(255, 255, 255, 0.95)'
+            });
+        };
+
+        const renderExperienceItems = () => {
+            if (!experienceList) return;
+
+            experienceList.innerHTML = '';
+            const newArticles = [];
+
+            if (!Array.isArray(experienceData) || experienceData.length === 0) {
+                const emptyState = document.createElement('p');
+                emptyState.className = 'rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500';
+                emptyState.textContent = 'Chưa có kinh nghiệm làm việc.';
+                experienceList.appendChild(emptyState);
+                registerRevealTargets([emptyState]);
+                applyExperienceOverflow();
+                return;
+            }
+
+            experienceData.forEach((item) => {
+                const theme = getAccentTheme(item?.theme);
+                const article = document.createElement('article');
+                article.className = 'rounded-2xl border border-slate-200 bg-white p-5 shadow-sm';
+
+                const headerRow = document.createElement('div');
+                headerRow.className = 'flex flex-wrap items-start justify-between gap-3';
+
+                const leftCol = document.createElement('div');
+                leftCol.className = 'space-y-2';
+
+                const titleRow = document.createElement('div');
+                titleRow.className = 'flex items-center gap-2 text-slate-900';
+                titleRow.insertAdjacentHTML('beforeend', createWorkIconSvg(theme.iconColor));
+
+                const titleHeading = document.createElement('h3');
+                titleHeading.className = 'text-lg font-semibold';
+                const titleParts = [item?.role, item?.company].filter(Boolean);
+                titleHeading.textContent = titleParts.join(' · ') || 'Vai trò chưa cập nhật';
+                titleRow.appendChild(titleHeading);
+                leftCol.appendChild(titleRow);
+
+                if (item?.location) {
+                    const locationRow = document.createElement('div');
+                    locationRow.className = 'flex items-center gap-2 text-sm text-slate-500';
+                    locationRow.insertAdjacentHTML('beforeend', createLocationIconSvg(theme.iconColor));
+                    const locationSpan = document.createElement('span');
+                    locationSpan.textContent = item.location;
+                    locationRow.appendChild(locationSpan);
+                    leftCol.appendChild(locationRow);
+                }
+
+                headerRow.appendChild(leftCol);
+
+                if (item?.timeframe) {
+                    const timeRow = document.createElement('div');
+                    timeRow.className = `flex items-center gap-2 text-sm font-medium ${theme.timeText}`;
+                    timeRow.insertAdjacentHTML('beforeend', createCalendarIconSvg(theme.iconColor));
+                    const timeSpan = document.createElement('span');
+                    timeSpan.textContent = item.timeframe;
+                    timeRow.appendChild(timeSpan);
+                    headerRow.appendChild(timeRow);
+                }
+
+                article.appendChild(headerRow);
+
+                if (item?.summary) {
+                    const summaryEl = document.createElement('p');
+                    summaryEl.className = 'mt-3 text-sm text-slate-600';
+                    summaryEl.textContent = item.summary;
+                    article.appendChild(summaryEl);
+                }
+
+                const achievements = Array.isArray(item?.achievements) ? item.achievements.filter(Boolean) : [];
+                if (achievements.length) {
+                    const list = document.createElement('ul');
+                    list.className = 'mt-3 list-disc space-y-1 pl-5 text-sm text-slate-600';
+                    achievements.forEach((achievement) => {
+                        const li = document.createElement('li');
+                        li.textContent = achievement;
+                        list.appendChild(li);
+                    });
+                    article.appendChild(list);
+                }
+
+                const tags = Array.isArray(item?.tags) ? item.tags.filter(Boolean) : [];
+                if (tags.length) {
+                    const tagWrapper = document.createElement('div');
+                    tagWrapper.className = 'mt-3 flex flex-wrap gap-2 text-xs font-medium';
+                    tags.forEach((tag) => {
+                        const tagEl = document.createElement('span');
+                        tagEl.className = `rounded-full px-3 py-1 ${theme.tagBg} ${theme.tagText}`;
+                        tagEl.textContent = tag;
+                        tagWrapper.appendChild(tagEl);
+                    });
+                    article.appendChild(tagWrapper);
+                }
+
+                experienceList.appendChild(article);
+                newArticles.push(article);
+            });
+
+            applyExperienceOverflow();
+            registerRevealTargets(newArticles);
+        };
+
+        const renderBlogItems = () => {
+            if (!blogGrid) return;
+
+            blogGrid.innerHTML = '';
+            blogGrid.className = 'grid gap-4 scroll-smooth';
+            const newCards = [];
+
+            if (!Array.isArray(blogItems) || blogItems.length === 0) {
+                const emptyState = document.createElement('p');
+                emptyState.className = 'rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500';
+                emptyState.textContent = 'Chưa có bài viết blog nào.';
+                blogGrid.appendChild(emptyState);
+                blogGrid.classList.add('grid-cols-1');
+                registerRevealTargets([emptyState]);
+                return;
+            }
+
+            if (blogItems.length >= 2) {
+                blogGrid.classList.add('grid-cols-2');
+            } else {
+                blogGrid.classList.add('grid-cols-1');
+            }
+
+            if (blogItems.length > 2) {
+                blogGrid.classList.add('max-h-80', 'overflow-y-auto', 'pr-1');
+            } else {
+                blogGrid.classList.remove('max-h-80', 'overflow-y-auto', 'pr-1');
+            }
+
+            blogItems.forEach((item) => {
+                const card = document.createElement('article');
+                card.className = 'group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:-translate-y-0.5 focus-visible:shadow-lg focus-visible:ring-2 focus-visible:ring-emerald-300';
+                card.tabIndex = 0;
+
+                const mediaWrapper = document.createElement('div');
+                mediaWrapper.className = 'relative aspect-[4/3] w-full overflow-hidden';
+
+                const img = document.createElement('img');
+                img.alt = item.imageAlt || item.title || 'Hình ảnh blog';
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                img.className = 'h-full w-full object-cover transition duration-300 group-hover:scale-105 group-focus-visible:scale-105';
+                setImageSourceWithFallback(img, item.imageWebp, item.image);
+
+                const overlay = document.createElement('span');
+                overlay.className = 'pointer-events-none absolute inset-0 flex items-center justify-center bg-slate-900/60 opacity-0 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100';
+
+                const eyeIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                eyeIcon.setAttribute('viewBox', '0 0 24 24');
+                eyeIcon.setAttribute('fill', 'none');
+                eyeIcon.setAttribute('stroke', 'currentColor');
+                eyeIcon.setAttribute('stroke-width', '1.5');
+                eyeIcon.classList.add('h-8', 'w-8', 'text-white');
+
+                const eyePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                eyePath.setAttribute('stroke-linecap', 'round');
+                eyePath.setAttribute('stroke-linejoin', 'round');
+                eyePath.setAttribute('d', 'M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.355 4.5 12 4.5c4.644 0 8.577 3.01 9.964 7.183.07.207.07.431 0 .639C20.577 16.49 16.645 19.5 12 19.5c-4.645 0-8.577-3.01-9.964-7.178z');
+
+                const pupilPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                pupilPath.setAttribute('stroke-linecap', 'round');
+                pupilPath.setAttribute('stroke-linejoin', 'round');
+                pupilPath.setAttribute('d', 'M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z');
+
+                eyeIcon.append(eyePath, pupilPath);
+                overlay.appendChild(eyeIcon);
+
+                mediaWrapper.append(img, overlay);
+
+                const textWrapper = document.createElement('div');
+                textWrapper.className = 'space-y-1 px-4 py-3';
+
+                const titleEl = document.createElement('p');
+                titleEl.className = 'text-sm font-semibold text-slate-900';
+                titleEl.textContent = item.title ?? 'Blog Entry';
+
+                const descEl = document.createElement('p');
+                descEl.className = 'text-xs text-slate-500';
+                descEl.textContent = item.description ?? '';
+
+                textWrapper.append(titleEl, descEl);
+                card.append(mediaWrapper, textWrapper);
+                blogGrid.appendChild(card);
+                newCards.push(card);
+
+                const triggerAlbum = () => {
+                    openBlogAlbumModal(item);
+                };
+
+                card.addEventListener('click', triggerAlbum);
+                card.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        triggerAlbum();
+                    }
+                });
+            });
+
+            registerRevealTargets(newCards);
+        };
+
+            const openBlogImageViewer = (photo, fallbackAlt) => {
+                if (!blogImageViewer || !blogImageViewerImg) return;
+                const preferredPhotoSrc = photo?.srcWebp ?? photo?.src ?? '';
+                const fallbackPhotoSrc = photo?.src ?? '';
+
+                if (!preferredPhotoSrc && !fallbackPhotoSrc) {
+                    return;
+                }
+
+                setImageSourceWithFallback(blogImageViewerImg, preferredPhotoSrc, fallbackPhotoSrc);
+                blogImageViewerImg.alt = photo?.alt || fallbackAlt || 'Ảnh chi tiết';
+                blogImageViewer.classList.remove('hidden');
+                blogImageViewer.classList.add('flex');
+            };
+
+            const hideBlogImageViewer = () => {
+                if (!blogImageViewer) return;
+                blogImageViewer.classList.add('hidden');
+                blogImageViewer.classList.remove('flex');
+                if (blogImageViewerImg) {
+                    blogImageViewerImg.onerror = null;
+                    blogImageViewerImg.src = '';
+                    blogImageViewerImg.alt = '';
+                }
+            };
+
+        const openBlogAlbumModal = (item) => {
+            if (!blogAlbumModal) return;
+            hideBlogImageViewer();
+
+            const albumImages = Array.isArray(item?.album) ? item.album : [];
+
+            if (blogAlbumTitle) {
+                blogAlbumTitle.textContent = item?.title ?? 'Bộ sưu tập';
+            }
+
+            if (blogAlbumDescription) {
+                blogAlbumDescription.textContent = item?.description ?? '';
+                blogAlbumDescription.classList.toggle('hidden', !item?.description);
+            }
+
+            if (blogAlbumGrid) {
+                blogAlbumGrid.innerHTML = '';
+                blogAlbumGrid.className = 'grid gap-3 sm:grid-cols-2 scroll-smooth';
+                const figureTargets = [];
+
+                if (!albumImages.length) {
+                    const emptyState = document.createElement('p');
+                    emptyState.className = 'rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center text-sm text-slate-500';
+                    emptyState.textContent = 'Chưa có ảnh liên quan.';
+                    blogAlbumGrid.appendChild(emptyState);
+                    blogAlbumGrid.classList.add('sm:grid-cols-1');
+                    blogAlbumGrid.classList.remove('max-h-80', 'overflow-y-auto', 'pr-1');
+                    registerRevealTargets([emptyState]);
+                } else {
+                    if (albumImages.length > 3) {
+                        blogAlbumGrid.classList.add('max-h-80', 'overflow-y-auto', 'pr-1');
+                    } else {
+                        blogAlbumGrid.classList.remove('max-h-80', 'overflow-y-auto', 'pr-1');
+                    }
+
+                    albumImages.forEach((photo) => {
+                        const figure = document.createElement('figure');
+                        figure.className = 'group cursor-zoom-in overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg';
+                        figure.tabIndex = 0;
+                        figure.setAttribute('role', 'button');
+                        figure.setAttribute('aria-label', `Phóng to ảnh ${photo?.alt || item?.title || ''}`.trim());
+
+                        const img = document.createElement('img');
+                        img.alt = photo?.alt || item?.title || 'Ảnh album';
+                        img.loading = 'lazy';
+                        img.decoding = 'async';
+                        img.className = 'h-40 w-full object-cover transition duration-300 group-hover:scale-105';
+                        setImageSourceWithFallback(img, photo?.srcWebp, photo?.src);
+
+                        const figcaption = document.createElement('figcaption');
+                        figcaption.className = 'px-3 py-2 text-xs text-slate-500';
+                        figcaption.textContent = photo?.alt || '';
+
+                        figure.append(img, figcaption);
+                        const openViewer = () => {
+                            openBlogImageViewer(photo, item?.title);
+                        };
+                        figure.addEventListener('click', openViewer);
+                        figure.addEventListener('keydown', (event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault();
+                                openViewer();
+                            }
+                        });
+                        blogAlbumGrid.appendChild(figure);
+                        figureTargets.push(figure);
+                    });
+
+                    registerRevealTargets(figureTargets);
+                }
+            }
+
+            blogAlbumModal.classList.remove('hidden');
+            blogAlbumModal.classList.add('flex');
+        };
+
+        const populateSkillModal = (card) => {
+            if (!card) {
+                return;
+            }
+
+            const title = card.querySelector('h3')?.textContent?.trim() ?? '';
+            const description = card.querySelector('p')?.textContent?.trim() ?? '';
+            const chipTexts = Array.from(card.querySelectorAll('ul li'))
+                .filter((chip) => !chip.hasAttribute('data-skill-more'))
+                .map((chip) => chip.textContent?.trim() ?? '')
+                .filter(Boolean);
+
+            if (skillModalTitle) {
+                skillModalTitle.textContent = title;
+            }
+
+            if (skillModalDescription) {
+                skillModalDescription.textContent = description;
+                skillModalDescription.classList.toggle('hidden', !description);
+            }
+
+            if (skillModalChips) {
+                skillModalChips.innerHTML = '';
+
+                if (!chipTexts.length) {
+                    const emptyState = document.createElement('span');
+                    emptyState.className = 'rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500';
+                    emptyState.textContent = 'Chưa có kỹ năng liên quan.';
+                    skillModalChips.appendChild(emptyState);
+                } else {
+                    chipTexts.forEach((label) => {
+                        const chipEl = document.createElement('span');
+                        chipEl.className = 'inline-flex items-center rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm';
+                        chipEl.textContent = label;
+                        skillModalChips.appendChild(chipEl);
+                    });
+                }
+            }
+        };
+
+        const openSkillModal = (card) => {
+            if (!skillModal) return;
+            populateSkillModal(card);
+            skillModal.classList.remove('hidden');
+            skillModal.classList.add('flex');
+        };
+
+        const hideSkillModal = () => {
+            skillModal?.classList.add('hidden');
+            skillModal?.classList.remove('flex');
+        };
+
+        const MAX_VISIBLE_SKILL_CHIPS = 3;
+
+        const prepareSkillCardChips = () => {
+            skillCards.forEach((card) => {
+                if (!card || card.dataset.skillPrepared === 'true') {
+                    return;
+                }
+
+                const chipList = card.querySelector('ul');
+                if (!chipList) {
+                    return;
+                }
+
+                const chips = Array.from(chipList.querySelectorAll('li'));
+                const extraChips = chips.slice(MAX_VISIBLE_SKILL_CHIPS);
+
+                if (extraChips.length) {
+                    extraChips.forEach((chip) => {
+                        chip.classList.add('hidden');
+                    });
+
+                    if (!chipList.querySelector('[data-skill-more]')) {
+                        const moreChip = document.createElement('li');
+                        moreChip.className = 'rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 cursor-pointer';
+                        moreChip.textContent = 'Xem thêm';
+                        moreChip.setAttribute('data-skill-more', '');
+                        moreChip.setAttribute('role', 'button');
+                        moreChip.tabIndex = 0;
+
+                        const open = () => openSkillModal(card);
+                        moreChip.addEventListener('click', (event) => {
+                            event.stopPropagation();
+                            open();
+                        });
+                        moreChip.addEventListener('keydown', (event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault();
+                                open();
+                            }
+                        });
+
+                        chipList.appendChild(moreChip);
+                    }
+                }
+
+                card.dataset.skillPrepared = 'true';
+            });
+        };
+
+        const updateCertificateSelectionStyles = (selectedId) => {
+            if (!certificateList) return;
+            const buttons = certificateList.querySelectorAll('[data-certificate-id]');
+            buttons.forEach((button) => {
+                const isActive = Boolean(selectedId && button.dataset.certificateId === selectedId);
+                button.classList.toggle('border-emerald-400', isActive);
+                button.classList.toggle('bg-emerald-50', isActive);
+                button.classList.toggle('text-emerald-700', isActive);
+            });
+        };
+
+        const setActiveCertificate = (certificateId) => {
+            if (!certificateData.length) {
+                activeCertificateId = null;
+                updateCertificateSelectionStyles(null);
+                certificateDetail?.classList.add('hidden');
+                return;
+            }
+
+            if (!certificateId) {
+                activeCertificateId = null;
+                updateCertificateSelectionStyles(null);
+                certificateDetail?.classList.add('hidden');
+                return;
+            }
+
+            const certificate = certificateData.find((item) => item.id === certificateId);
+
+            if (!certificate) {
+                activeCertificateId = null;
+                updateCertificateSelectionStyles(null);
+                certificateDetail?.classList.add('hidden');
+                return;
+            }
+
+            activeCertificateId = certificate.id;
+            certificateDetail?.classList.remove('hidden');
+
+            updateCertificateSelectionStyles(certificate.id);
+
+            if (certificateName) {
+                certificateName.textContent = certificate.name ?? '';
+            }
+
+            if (certificateIssuer) {
+                certificateIssuer.textContent = certificate.issuer ?? '';
+                certificateIssuer.classList.toggle('hidden', !certificate.issuer);
+            }
+
+            if (certificateDescription) {
+                certificateDescription.textContent = certificate.description ?? '';
+                certificateDescription.classList.toggle('hidden', !certificate.description);
+            }
+
+            if (certificateStats) {
+                certificateStats.innerHTML = '';
+                const stats = Array.isArray(certificate.stats) ? certificate.stats : [];
+
+                stats.forEach((stat) => {
+                    const li = document.createElement('li');
+                    li.textContent = stat;
+                    certificateStats.appendChild(li);
+                });
+
+                certificateStats.classList.toggle('hidden', stats.length === 0);
+            }
+
+            if (certificateImage && certificateImageLink) {
+                if (certificate.image) {
+                    certificateImage.src = certificate.image;
+                    certificateImage.alt = certificate.imageAlt || `Ảnh chứng chỉ ${certificate.name ?? ''}`.trim();
+                    certificateImageLink.href = certificate.image;
+                    certificateImageLink.setAttribute('aria-label', `Mở ảnh chứng chỉ ${certificate.name ?? ''}`.trim());
+                    certificateImageLink.classList.remove('hidden');
+                } else {
+                    certificateImage.src = '';
+                    certificateImage.alt = '';
+                    certificateImageLink.removeAttribute('href');
+                    certificateImageLink.removeAttribute('aria-label');
+                    certificateImageLink.classList.add('hidden');
+                }
+            }
+        };
+
+        const renderCertificateOptions = () => {
+            if (!certificateList) return;
+
+            certificateList.innerHTML = '';
+            const newButtons = [];
+
+            if (!certificateData.length) {
+                certificateDetail?.classList.add('hidden');
+                const emptyState = document.createElement('p');
+                emptyState.className = 'py-4 text-center text-sm text-slate-500';
+                emptyState.textContent = 'Hiện chưa có chứng chỉ nào.';
+                certificateList.appendChild(emptyState);
+                registerRevealTargets([emptyState]);
+                applyCertificateListOverflow();
+                return;
+            }
+
+            certificateData.forEach((certificate) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.dataset.certificateId = certificate.id;
+                button.className = 'certificate-option flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-left text-slate-700 transition hover:border-emerald-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300';
+
+                const infoWrapper = document.createElement('span');
+                infoWrapper.className = 'flex flex-col';
+
+                const nameEl = document.createElement('span');
+                nameEl.className = 'text-sm font-semibold';
+                nameEl.textContent = certificate.name ?? '';
+                infoWrapper.appendChild(nameEl);
+
+                if (certificate.issuer) {
+                    const issuerEl = document.createElement('span');
+                    issuerEl.className = 'mt-1 text-xs text-slate-500';
+                    issuerEl.textContent = certificate.issuer;
+                    infoWrapper.appendChild(issuerEl);
+                }
+
+                const highlightEl = document.createElement('span');
+                highlightEl.className = 'ml-3 text-xs font-semibold text-emerald-600';
+                highlightEl.textContent = certificate.highlight ?? '';
+                if (!certificate.highlight) {
+                    highlightEl.classList.add('hidden');
+                }
+
+                button.append(infoWrapper, highlightEl);
+
+                button.addEventListener('click', () => {
+                    setActiveCertificate(certificate.id);
+                });
+
+                certificateList.appendChild(button);
+                newButtons.push(button);
+            });
+
+            applyCertificateListOverflow();
+            registerRevealTargets(newButtons);
+        };
+
+        const openCertificateModal = () => {
+            if (!certificateModal) return;
+
+            renderCertificateOptions();
+
+            if (activeCertificateId) {
+                setActiveCertificate(activeCertificateId);
+            } else {
+                updateCertificateSelectionStyles(null);
+                certificateDetail?.classList.add('hidden');
+            }
+
+            certificateModal.classList.remove('hidden');
+            certificateModal.classList.add('flex');
+        };
+
+        const hideCertificateModal = () => {
+            if (!certificateModal) return;
+            certificateModal.classList.add('hidden');
+            certificateModal.classList.remove('flex');
+        };
+
+        const openTestimonialModal = (card) => {
+            if (!testimonialModal || !testimonialModalContent || !card?.dataset) return;
+            const {
+                testimonialDetail,
+                testimonialName,
+                testimonialRole,
+                testimonialCompany,
+                testimonialTime
+            } = card.dataset;
+
+            testimonialModalContent.textContent = testimonialDetail ?? '';
+
+            if (testimonialModalName) {
+                testimonialModalName.textContent = testimonialName ?? 'Ẩn danh';
+            }
+
+            if (testimonialModalMeta) {
+                const metaParts = [testimonialRole, testimonialCompany].filter(Boolean);
+                testimonialModalMeta.textContent = metaParts.join(' · ');
+                testimonialModalMeta.classList.toggle('hidden', metaParts.length === 0);
+            }
+
+            if (testimonialModalTime) {
+                if (testimonialTime) {
+                    testimonialModalTime.textContent = `Thời gian đánh giá: ${testimonialTime}`;
+                    testimonialModalTime.classList.remove('hidden');
+                } else {
+                    testimonialModalTime.textContent = '';
+                    testimonialModalTime.classList.add('hidden');
+                }
+            }
+
+            testimonialModal.classList.remove('hidden');
+            testimonialModal.classList.add('flex');
+        };
+
+        const hideTestimonialModal = () => {
+            testimonialModal?.classList.add('hidden');
+            testimonialModal?.classList.remove('flex');
+        };
+
+        const createTestimonialCard = (testimonial) => {
+            const card = document.createElement('article');
+            card.className = 'testimonial-card rounded-xl border border-slate-100 bg-slate-50 p-4 shadow-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200';
+            card.tabIndex = 0;
+
+            const {
+                detail = '',
+                name = '',
+                role = '',
+                company = '',
+                time = '',
+                quote = ''
+            } = testimonial ?? {};
+
+            card.dataset.testimonialDetail = detail;
+            card.dataset.testimonialName = name;
+            card.dataset.testimonialRole = role;
+            card.dataset.testimonialCompany = company;
+            card.dataset.testimonialTime = time;
+
+            const quoteEl = document.createElement('p');
+            quoteEl.className = 'mt-2 text-sm text-slate-600';
+            quoteEl.textContent = quote ? `"${quote}"` : '';
+
+            const metaEl = document.createElement('p');
+            metaEl.className = 'mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500';
+            const metaParts = [name, role].filter(Boolean);
+            metaEl.textContent = metaParts.join(' · ');
+
+            card.append(quoteEl, metaEl);
+            return card;
+        };
+
+        const bindTestimonialCardEvents = () => {
+            testimonialCards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    openTestimonialModal(card);
+                });
+                card.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        openTestimonialModal(card);
+                    }
+                });
+            });
+        };
+
+        const renderTestimonials = () => {
+            if (!testimonialTrack) {
+                testimonialCards = [];
+                return;
+            }
+
+            testimonialTrack.innerHTML = '';
+
+            if (!testimonialData.length) {
+                const emptyState = document.createElement('p');
+                emptyState.className = 'py-6 text-center text-sm text-slate-500';
+                emptyState.textContent = 'Chưa có lời đánh giá.';
+                testimonialTrack.appendChild(emptyState);
+                registerRevealTargets([emptyState]);
+                testimonialCards = [];
+                return;
+            }
+
+            const duplicated = testimonialData.concat(testimonialData);
+            const fragment = document.createDocumentFragment();
+
+            duplicated.forEach((testimonial) => {
+                fragment.appendChild(createTestimonialCard(testimonial));
+            });
+
+            testimonialTrack.appendChild(fragment);
+            testimonialCards = testimonialTrack.querySelectorAll('[data-testimonial-detail]');
+            registerRevealTargets(Array.from(testimonialCards));
+            bindTestimonialCardEvents();
+        };
+
+    renderIntroduction();
+    renderSkillItems();
+    renderEducationItems();
+    renderExperienceItems();
+    renderProjectItems();
+    renderTestimonials();
+
+    registerRevealTargets([
+        document.querySelector('#gioi-thieu'),
+        document.querySelector('#loi-danh-gia'),
+        document.querySelector('#hoc-van'),
+        document.querySelector('#ky-nang'),
+        document.querySelector('#kinh-nghiem'),
+        document.querySelector('#du-an')
+    ].filter(Boolean));
+
+    registerRevealTargets([
+        document.getElementById('testimonial-modal'),
+        document.getElementById('message-modal'),
+        document.getElementById('skill-modal'),
+        document.getElementById('certificate-modal'),
+        document.getElementById('blog-modal'),
+        document.getElementById('blog-album-modal')
+    ].filter(Boolean));
+
+    handleMotionPreferenceChange();
+
+    const refreshPeekLayouts = () => {
+        applyEducationOverflow();
+        applyExperienceOverflow();
+        applyProjectOverflow();
+    };
+
+    window.addEventListener('resize', refreshPeekLayouts);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopHeroTyping();
+        } else {
+            initHeroTyping();
+        }
+    });
+    scheduleReviewNotice();
+    closeReviewNotice?.addEventListener('click', (event) => {
+        event.preventDefault();
+        hideReviewNotice();
+    });
+    closeSkillModal?.addEventListener('click', () => {
+        hideSkillModal();
+    });
+    skillModal?.addEventListener('click', (event) => {
+        if (event.target === skillModal) {
+            hideSkillModal();
+        }
+    });
+        messageBtn?.addEventListener('click', openModal);
+        messageActionTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                openModal();
+            });
+            trigger.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openModal();
+                }
+            });
+        });
+        blogActionTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                openBlogModal();
+            });
+            trigger.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openBlogModal();
+                }
+            });
+        });
+        certificateActionTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                openCertificateModal();
+            });
+            trigger.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openCertificateModal();
+                }
+            });
+        });
+        closeMessageModal?.addEventListener('click', hideModal);
+        messageModal?.addEventListener('click', (event) => {
+            if (event.target === messageModal) {
+                hideModal();
+            }
+        });
+        closeBlogModal?.addEventListener('click', hideBlogModal);
+        blogModal?.addEventListener('click', (event) => {
+            if (event.target === blogModal) {
+                hideBlogModal();
+            }
+        });
+        closeBlogAlbumModal?.addEventListener('click', hideBlogAlbumModal);
+        blogAlbumModal?.addEventListener('click', (event) => {
+            if (event.target === blogAlbumModal) {
+                hideBlogAlbumModal();
+            }
+        });
+        closeBlogImageViewer?.addEventListener('click', hideBlogImageViewer);
+        blogImageViewer?.addEventListener('click', (event) => {
+            if (event.target === blogImageViewer) {
+                hideBlogImageViewer();
+            }
+        });
+        closeTestimonialModal?.addEventListener('click', hideTestimonialModal);
+        testimonialModal?.addEventListener('click', (event) => {
+            if (event.target === testimonialModal) {
+                hideTestimonialModal();
+            }
+        });
+        closeCertificateModal?.addEventListener('click', hideCertificateModal);
+        certificateModal?.addEventListener('click', (event) => {
+            if (event.target === certificateModal) {
+                hideCertificateModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                hideModal();
+                hideBlogModal();
+                hideBlogAlbumModal();
+                hideBlogImageViewer();
+                hideTestimonialModal();
+                hideCertificateModal();
+                hideSkillModal();
+                if (reviewNotice?.dataset.visible === 'true') {
+                    hideReviewNotice();
+                }
+            }
+        });
+        followBtn?.addEventListener('click', () => {
+            const followUrl = 'https://www.facebook.com/your.page.username?sk=followers';
+            window.open(followUrl, '_blank', 'noopener');
+        });
+    </script>
+</body>
+</html>
