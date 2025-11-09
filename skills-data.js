@@ -1,21 +1,9 @@
 window.SKILLS = [
     {
-        id: 'ux-research',
-        name: 'UX Research',
-        description: 'Phỏng vấn, khảo sát và tổng hợp insight để định hướng chiến lược sản phẩm.',
+        id: 'Kỹ năng côt lõi',
+        name: 'Kỹ năng cốt lõi',
+        description: 'Các kỹ năng cốt lõi được tổng hợp lại trong quá trình học ở trong trường.',
         capabilities: ['User Interview', 'Persona', 'Journey Mapping']
-    },
-    {
-        id: 'ui-design',
-        name: 'Thiết kế giao diện',
-        description: 'Thiết kế wireframe, layout và visual system nhất quán trên đa nền tảng.',
-        capabilities: ['Figma', 'Design System', 'Responsive UI']
-    },
-    {
-        id: 'prototype-testing',
-        name: 'Prototype & Testing',
-        description: 'Xây dựng nguyên mẫu tương tác và tiến hành usability test để cải thiện trải nghiệm.',
-        capabilities: ['Interactive Prototype', 'Usability Test', 'A/B Testing']
     },
     {
         id: 'kỹ năng mền & khác',
