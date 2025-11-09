@@ -18,9 +18,9 @@ window.SKILLS = [
         capabilities: ['Interactive Prototype', 'Usability Test', 'A/B Testing']
     },
     {
-        id: 'collaboration',
-        name: 'Mềm & Hợp tác',
-        description: 'Giao tiếp rõ ràng, điều phối sprint và cộng tác đa chức năng.',
-        capabilities: ['Facilitation', 'Design Critique', 'Agile Workflow']
+        id: 'kỹ năng mền & khác',
+        name: 'Kỹ năng mền & kỹ năng khác',
+        description: 'Các kỹ năng mền  được tổng hợp và học hỏi trong quá trình làm việc để đưa ra.',
+        capabilities: ['Hàn hồ quang cơ cản ( que hàn , mig)', 'Hàn cáp quang cơ bản', 'chuẩn(a) và chuẩn(b)', 'Kéo cáp ( đào hố kéo cáp , leo cột kéo cáp )', 'Dọc bản vẽ kỹ thuật cơ bản']
     }
 ];
