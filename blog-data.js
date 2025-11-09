@@ -253,47 +253,80 @@ window.BLOG_ITEMS = [
         imageAlt: 'Creative workspace with Adobe tools',
         album: [
             {
-                src: 'image/0002/.jpg',
+                src: 'image/0002/1.jpg',
+                srcWebp: 'image/webp/1.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/31.jpg',
                 srcWebp: 'image/webp/.webp',
                 alt: '0'
             },  
             {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
+                src: 'image/0002/47.jpg',
+                srcWebp: 'image/webp/34.webp',
                 alt: '0'
             },  
             {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            },  
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
+                src: 'image/0002/48.jpg',
+                srcWebp: 'image/webp/35.webp',
                 alt: '0'
             }, 
             {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
+                src: 'image/0002/49.jpg',
+                srcWebp: 'image/webp/36.webp',
                 alt: '0'
             },  
             {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
+                src: 'image/0002/50.jpg',
+                srcWebp: 'image/webp/37.webp',
                 alt: '0'
             },  
             {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
+                src: 'image/0002/51.jpg',
+                srcWebp: 'image/webp/38.webp',
                 alt: '0'
             },  
             {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
+                src: 'image/0002/52.jpg',
+                srcWebp: 'image/webp/39.webp',
+                alt: '0'
+            },
+             {
+                src: 'image/0002/83.jpg',
+                srcWebp: 'image/webp/67.webp',
+                alt: '0'
+            }, 
+            {
+                src: 'image/0002/84.jpg',
+                srcWebp: 'image/webp/68.webp',
+                alt: '0'
+            },
+             {
+                src: 'image/0002/85.jpg',
+                srcWebp: 'image/webp/69.webp',
+                alt: '0'
+            },    
+            {
+                src: 'image/0002/87.jpg',
+                srcWebp: 'image/webp/70.webp',
+                alt: '0'
+            },
+             {
+                src: 'image/0002/88.jpg',
+                srcWebp: 'image/webp/71.webp',
+                alt: '0'
+            },
+                 {
+                src: 'image/0002/89.jpg',
+                srcWebp: 'image/webp/72.webp',
+                alt: '0'
+            },
+             {
+                src: 'image/0002/106.jpg',
+                srcWebp: 'image/webp/88.webp',
                 alt: '0'
             }
         ]
-    }
-
-    
+    }   
 ];
