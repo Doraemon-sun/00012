@@ -1,4 +1,19 @@
 window.EXPERIENCES = [
+     {
+        id: 'no.000',
+        role: 'Thợ',
+        company: 'làm tự do',
+        theme: 'emerald',
+        location: 'Bình dương, TP. Hồ Chí Minh, Việt Nam',
+        timeframe: '8/2025 – nay',
+        summary: 'Lắp đặt camera và thực hiện phân thô hệ thống điện dân dụng, phối hợp với thợ chính, đảm bảo kỹ thuật và tiến độ thi công.',
+        achievements: [
+            'Thực hiện lắp đặt camera và đi dây điện thô theo bản vẽ, tuân thủ an toàn và tiêu chuẩn kỹ thuật.',
+            'Phối hợp cùng thợ chính hoàn thiện hạng mục phân thô trong quá trình thi công.',
+            'Đảm bảo khu vực thi công gọn gàng, an toàn và bàn giao đúng tiến độ.'
+        ],
+        tags: ['Camera giám sát', 'Điện dân dụng', 'Phân thô']
+    },
     {
         id: 'no.001',
         role: 'Nhân viên kỹ thuật',
@@ -6,42 +21,42 @@ window.EXPERIENCES = [
         theme: 'emerald',
         location: 'Bình dương, TP. Hồ Chí Minh, Việt Nam',
         timeframe: '12/2024 – 8/2025',
-        summary: 'Dẫn dắt đội ngũ thiết kế 5 người xây dựng hệ sinh thái ứng dụng thương mại điện tử, tối ưu trải nghiệm khách hàng đa kênh.',
+        summary: 'Thực hiện lắp đặt hệ thống mạng nội bộ, camera và video intercom, đảm bảo đúng kỹ thuật và tiến độ thi công.',
         achievements: [
-            'Xây dựng design system thống nhất cho web, mobile và POS, giảm 40% thời gian thiết kế.',
-            'Thiết kế và kiểm thử quy trình thanh toán mới, tăng tỷ lệ chuyển đổi giỏ hàng thêm 18%.',
-            'Phối hợp product manager và tech lead để lập roadmap tính năng theo insight nghiên cứu.'
+            'Lắp đặt thiết bị mạng và camera theo bản vẽ, tuân thủ tiêu chuẩn kỹ thuật và an toàn.',
+            'Hỗ trợ đội kỹ thuật trong quá trình kiểm tra và hoàn thiện hạng mục thi công.',
+            'Đảm bảo khu vực thi công gọn gàng, an toàn và bàn giao đúng thời hạn.'
         ],
-        tags: ['Design System', 'Team Leadership', 'E-commerce UX']
+        tags: ['Mạng nội bộ', 'Camera giám sát', 'Thi công hệ thống']
     },
     {
         id: 'no.002',
-        role: 'UX Designer',
+        role: 'Công nhân bảo trì điện',
         company: 'KOLON INDUSTRIES BINH DUONG CO., LTD',
         theme: 'emerald',
-        location: 'Singapore & Remote',
-        timeframe: '2019 – 2022',
-        summary: 'Thiết kế trải nghiệm ví điện tử cho người dùng Đông Nam Á, tập trung vào onboarding và quản lý tài chính cá nhân.',
+        location: 'Khu công nghiệp Bàu Bàng, Bình Dương, Việt Nam',
+        timeframe: 'Sau thực tập (7/2024 - 11/2024)',
+        summary: 'Tham gia bảo trì hệ thống điện, hỗ trợ vận hành dây chuyền sản xuất và xử lý sự cố kỹ thuật nhằm đảm bảo hoạt động ổn định của nhà máy.',
         achievements: [
-            'Nghiên cứu người dùng tại 3 thị trường, xác định 5 phân khúc chính và insight hành vi chi tiêu.',
-            'Tạo prototype tương tác cao cho các luồng nạp/rút tiền, giúp đội kỹ thuật rút ngắn 25% thời gian phát triển.',
-            'Tổ chức workshop co-design với stakeholder để đồng bộ ưu tiên sản phẩm.'
+             'Thực hiện bảo dưỡng định kỳ thiết bị điện và hệ thống chiếu sáng trong khu vực sản xuất.',
+             'Phối hợp đội kỹ thuật xử lý nhanh các sự cố điện, giúp giảm thời gian ngừng máy.',
+             'Tham gia cải tiến hệ thống tủ điện và bố trí dây dẫn gọn gàng, nâng cao an toàn lao động.'
         ],
-        tags: ['Fintech', 'User Research', 'Prototype']
-    },
+       tags: ['Bảo trì điện', 'Thiết bị công nghiệp', 'Xử lý sự cố']
+},
     {
         id: 'no.003',
-        role: 'Thục tập sinh',
+        role: 'Thực tập sinh điện công nghiệp',
         company: 'KOLON INDUSTRIES BINH DUONG CO., LTD',
         theme: 'sky',
-        location: 'Hà Nội, Việt Nam',
-        timeframe: '',
-        summary: 'Thực hiện dự án web/app cho khách hàng trong lĩnh vực giáo dục, bất động sản và du lịch.',
+        location: 'Bình Dương, Việt Nam',
+        timeframe: '3 tháng',
+        summary: 'Thực tập tại bộ phận bảo trì điện, hỗ trợ kiểm tra và lắp đặt thiết bị điện trong dây chuyền sản xuất.',
         achievements: [
-            'Thiết kế wireframe và giao diện cho hơn 15 dự án, đảm bảo tuân thủ brand guideline.',
-            'Phối hợp developer để triển khai component library, giảm lỗi giao diện còn dưới 3%.',
-            'Triển khai A/B testing cho trang landing, cải thiện tỉ lệ đăng ký khóa học tăng 22%.'
-        ],
-        tags: ['Client Projects', 'Wireframing', 'A/B Testing']
-    }
+            'Học cách đọc bản vẽ điện và thực hành đấu nối mạch điều khiển cơ bản.',
+            'Hỗ trợ thay thế, kiểm tra cầu dao, contactor và cảm biến tại khu vực sản xuất.',
+            'Tiếp cận quy trình an toàn điện và tiêu chuẩn bảo trì thiết bị công nghiệp.'
+  ],
+  tags: ['Thực tập điện', 'An toàn điện công nghiệp', 'Đấu nối cơ bản']
+}
 ];
