@@ -1,11 +1,11 @@
 window.EXPERIENCES = [
     {
-        id: 'creative-studio-senior-ux-ui-designer',
+        id: 'no.001',
         role: 'Nhân viên kỹ thuật',
         company: 'Công ty TNHH HP TECH',
         theme: 'emerald',
-        location: 'Làm việc tại bãi Pin năng lượng mặt trười của nhà máy nhiệt điện vĩnh tân 2',
-        timeframe: '2/2025 – 8/2025',
+        location: 'Bình dương, TP. Hồ Chí Minh, Việt Nam',
+        timeframe: '12/2024 – 8/2025',
         summary: 'Dẫn dắt đội ngũ thiết kế 5 người xây dựng hệ sinh thái ứng dụng thương mại điện tử, tối ưu trải nghiệm khách hàng đa kênh.',
         achievements: [
             'Xây dựng design system thống nhất cho web, mobile và POS, giảm 40% thời gian thiết kế.',
@@ -15,9 +15,9 @@ window.EXPERIENCES = [
         tags: ['Design System', 'Team Leadership', 'E-commerce UX']
     },
     {
-        id: 'fintech-startup-ux-designer',
+        id: 'no.002',
         role: 'UX Designer',
-        company: 'Fintech Startup',
+        company: 'KOLON INDUSTRIES BINH DUONG CO., LTD',
         theme: 'emerald',
         location: 'Singapore & Remote',
         timeframe: '2019 – 2022',
@@ -30,12 +30,12 @@ window.EXPERIENCES = [
         tags: ['Fintech', 'User Research', 'Prototype']
     },
     {
-        id: 'digital-agency-product-designer',
-        role: 'Product Designer',
-        company: 'Digital Agency',
+        id: 'no.003',
+        role: 'Thục tập sinh',
+        company: 'KOLON INDUSTRIES BINH DUONG CO., LTD',
         theme: 'sky',
         location: 'Hà Nội, Việt Nam',
-        timeframe: '2017 – 2019',
+        timeframe: '',
         summary: 'Thực hiện dự án web/app cho khách hàng trong lĩnh vực giáo dục, bất động sản và du lịch.',
         achievements: [
             'Thiết kế wireframe và giao diện cho hơn 15 dự án, đảm bảo tuân thủ brand guideline.',
