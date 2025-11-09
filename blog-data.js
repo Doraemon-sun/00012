@@ -33,24 +33,49 @@ window.BLOG_ITEMS = [
         id: 'Nhiệt điện vĩnh tân 2',
         title: 'Hệ thống camera an ninh  và hệ thống chiếu sáng tại bãi pin năng lượng mặt trời Nhiệt điện Vĩnh Tân 2',
         description: 'Nhân Viên · loại dự án : đấu thầu · hoàn thành tháng 6/2025',
-        image: 'image/0001/blog-adobe-visual-cover.jpg',
-        imageWebp: 'image/0001/blog-adobe-visual-cover.webp',
+        image: 'image/0002/88.jpg',
+        imageWebp: 'image/webp/71.webp',
         imageAlt: 'Creative workspace with Adobe tools',
         album: [
             {
-                src: 'image/0001/blog-adobe-visual-01.jpg',
-                srcWebp: 'image/0001/blog-adobe-visual-01.webp',
-                alt: 'Graphic designer desk with tools'
-            },
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
             {
-                src: 'image/0001/blog-adobe-visual-02.jpg',
-                srcWebp: 'image/0001/blog-adobe-visual-02.webp',
-                alt: 'Color palettes and sketches'
-            },
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
             {
-                src: 'image/0001/blog-adobe-visual-03.jpg',
-                srcWebp: 'image/0001/blog-adobe-visual-03.webp',
-                alt: 'Designer editing in Illustrator'
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            }, 
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
             }
         ]
     },
