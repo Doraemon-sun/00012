@@ -1,9 +1,9 @@
 window.PROJECTS = [
     {
-        id: 'omnishop-commerce-ecosystem',
-        name: 'OmniShop · Hệ sinh thái thương mại điện tử',
+        id: 'no.012',
+        name: 'Hệ thống điền chiếu sáng & camera giám sát.',
         subtitle: '2025 · Creative Studio',
-        highlight: 'Sản phẩm đang vận hành',
+        highlight: 'Thiết bị vận hành ổn định',
         theme: 'emerald',
         description: 'Xây dựng trải nghiệm mua sắm đa kênh, đồng bộ từ web, mobile đến điểm bán POS cho hơn 1 triệu người dùng hoạt động mỗi tháng.',
         achievements: [
@@ -14,10 +14,10 @@ window.PROJECTS = [
         tags: ['Camera', '', 'Product Analytics']
     },
     {
-        id: 'prosperpay-digital-wallet',
-        name: 'ProsperPay · Ví tài chính cá nhân',
+        id: 'no.001',
+        name: 'Hệ thống mạng nội bộ & camera và video intercom cho chung cư D-Hommes',
         subtitle: '2025 · Fintech Startup',
-        highlight: 'MVP ra mắt thị trường',
+        highlight: 'Thiết bị vận hành ổn định',
         theme: 'emerald',
         description: 'Ra mắt giải pháp quản lý ngân sách với bộ tính năng dòng tiền, cảnh báo chi tiêu và mục tiêu tiết kiệm cá nhân hóa.',
         achievements: [
