@@ -12,8 +12,8 @@ window.SKILLS = [
         capabilities: ['Hàn hồ quang cơ cản ( que hàn , mig)', 'Hàn cáp quang cơ bản', 'chuẩn(a) và chuẩn(b)', 'Kéo cáp ( đào hố kéo cáp , leo cột kéo cáp )', 'Dọc bản vẽ kỹ thuật cơ bản']
     },
      {
-        id: 'kỹ năng Khác',
-        name: 'Kỹ năng khác',
+        id: 'kỹ năng vi tính',
+        name: 'Kỹ năng vi tính',
         description: 'Các kỹ năng mền về máy tính .',
         capabilities: ['Tin học cơ bản']
     }
