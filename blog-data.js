@@ -211,9 +211,9 @@ window.BLOG_ITEMS = [
                 src: 'image/0002/105.jpg',
                 srcWebp: 'image/webp/87.webp',
                 alt: 'Designer editing in Illustrator'
-            },
-               ]
             }
+         ]
+      },
     {
         id: 'Chung Cư D-Homme',
         title: 'Hệ thống camera an ninh và mạng nội bộ tại Chung Cư D-Homme',
