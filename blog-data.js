@@ -1,85 +1,5 @@
 window.BLOG_ITEMS = [
-    {
-        id: 'Chung Cư D-Homme',
-        title: 'Hệ thống camera an ninh và mạng nội bộ tại Chung Cư D-Homme',
-        description: 'Nhân viên kỹ thuật · loại công trình : Khoán dự án · 2025 · Hoàn thành tháng 7/2025',
-        image: 'image/0001/blog-google-ux-cover.jpg',
-        imageWebp: 'image/0001/blog-google-ux-cover.webp',
-        imageAlt: 'ảnh minh họa hệ thống camera an ninh',
-        album: [
-            {
-                src: 'image/0001/blog-google-ux-01.jpg',
-                srcWebp: 'image/0001/blog-google-ux-01.webp',
-                alt: 'UX research sketches on desk'
-            },
-            {
-                src: 'image/0001/blog-google-ux-02.jpg',
-                srcWebp: 'image/0001/blog-google-ux-02.webp',
-                alt: 'Design thinking notes'
-            },
-            {
-                src: 'image/0001/blog-google-ux-03.jpg',
-                srcWebp: 'image/0001/blog-google-ux-03.webp',
-                alt: 'Design thinking notes'
-            },
-            {
-                src: 'image/0001/blog-google-ux-04.jpg',
-                srcWebp: 'image/0001/blog-google-ux-04.webp',
-                alt: 'Team collaborating on UX flows'
-            }
-        ]
-    },
-    {
-        id: 'Nhiệt điện vĩnh tân 2',
-        title: 'Hệ thống camera an ninh  và hệ thống chiếu sáng tại bãi pin năng lượng mặt trời Nhiệt điện Vĩnh Tân 2',
-        description: 'Nhân Viên · loại dự án : đấu thầu · hoàn thành tháng 6/2025',
-        image: 'image/0002/88.jpg',
-        imageWebp: 'image/webp/71.webp',
-        imageAlt: 'Creative workspace with Adobe tools',
-        album: [
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            },  
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            },  
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            },  
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            }, 
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            },  
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            },  
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            },  
-            {
-                src: 'image/0002/.jpg',
-                srcWebp: 'image/webp/.webp',
-                alt: '0'
-            }
-        ]
-    },
-     {
+         {
         id: 'Việc làm tự do ',
         title: 'Việc làm tự do ',
         description: 'Việc làm tự do · 2025 · Đang thực hiện',
@@ -291,7 +211,88 @@ window.BLOG_ITEMS = [
                 src: 'image/0002/105.jpg',
                 srcWebp: 'image/webp/87.webp',
                 alt: 'Designer editing in Illustrator'
+            },
+    {
+        id: 'Chung Cư D-Homme',
+        title: 'Hệ thống camera an ninh và mạng nội bộ tại Chung Cư D-Homme',
+        description: 'Nhân viên kỹ thuật · loại công trình : Khoán dự án · 2025 · Hoàn thành tháng 7/2025',
+        image: 'image/0001/blog-google-ux-cover.jpg',
+        imageWebp: 'image/0001/blog-google-ux-cover.webp',
+        imageAlt: 'ảnh minh họa hệ thống camera an ninh',
+        album: [
+            {
+                src: 'image/0001/blog-google-ux-01.jpg',
+                srcWebp: 'image/0001/blog-google-ux-01.webp',
+                alt: 'UX research sketches on desk'
+            },
+            {
+                src: 'image/0001/blog-google-ux-02.jpg',
+                srcWebp: 'image/0001/blog-google-ux-02.webp',
+                alt: 'Design thinking notes'
+            },
+            {
+                src: 'image/0001/blog-google-ux-03.jpg',
+                srcWebp: 'image/0001/blog-google-ux-03.webp',
+                alt: 'Design thinking notes'
+            },
+            {
+                src: 'image/0001/blog-google-ux-04.jpg',
+                srcWebp: 'image/0001/blog-google-ux-04.webp',
+                alt: 'Team collaborating on UX flows'
             }
+        ]
+    },
+    {
+        id: 'Nhiệt điện vĩnh tân 2',
+        title: 'Hệ thống camera an ninh  và hệ thống chiếu sáng tại bãi pin năng lượng mặt trời Nhiệt điện Vĩnh Tân 2',
+        description: 'Nhân Viên · loại dự án : đấu thầu · hoàn thành tháng 6/2025',
+        image: 'image/0002/88.jpg',
+        imageWebp: 'image/webp/71.webp',
+        imageAlt: 'Creative workspace with Adobe tools',
+        album: [
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            }, 
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            },  
+            {
+                src: 'image/0002/.jpg',
+                srcWebp: 'image/webp/.webp',
+                alt: '0'
+            }
+        ]
+    }
+
         ]
     }
 ];
