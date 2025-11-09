@@ -2,9 +2,9 @@ window.EXPERIENCES = [
     {
         id: 'creative-studio-senior-ux-ui-designer',
         role: 'Nhân viên kỹ thuật',
-        company: 'Nhà máy nhiệt điện vĩnh tân 2',
+        company: 'Công ty TNHH HP TECH',
         theme: 'emerald',
-        location: 'Bình thuận, Việt Nam',
+        location: 'Làm việc tại bãi Pin năng lượng mặt trười của nhà máy nhiệt điện vĩnh tân 2',
         timeframe: '2/2025 – 8/2025',
         summary: 'Dẫn dắt đội ngũ thiết kế 5 người xây dựng hệ sinh thái ứng dụng thương mại điện tử, tối ưu trải nghiệm khách hàng đa kênh.',
         achievements: [
