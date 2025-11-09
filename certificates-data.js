@@ -10,7 +10,7 @@ window.CERTIFICATES = [
             'Dự án tốt nghiệp: Thiết kế ứng dụng đặt đồ ăn nội địa',
             'Điểm đánh giá mentor: 96/100'
         ],
-        image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=720&q=80',
+        image: 'image/0001/blog-google-ux-01.jpg',
         imageAlt: 'Hình minh hoạ chứng chỉ Google UX Design'
     }
 ];
