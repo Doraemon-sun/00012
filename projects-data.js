@@ -2,29 +2,30 @@ window.PROJECTS = [
     {
         id: 'no.012',
         name: 'Hệ thống điền chiếu sáng & camera giám sát.',
-        subtitle: '2025 · Creative Studio',
+        subtitle: 'Vị trí : Nhân viên kỹ thuật • hoàn thành công việc : 7/2025',
         highlight: 'Thiết bị vận hành ổn định',
         theme: 'emerald',
-        description: 'Xây dựng trải nghiệm mua sắm đa kênh, đồng bộ từ web, mobile đến điểm bán POS cho hơn 1 triệu người dùng hoạt động mỗi tháng.',
+        description: 'Thiết kế, lắp đặt và bảo trì hệ thống chiếu sáng và camera giám sát, đảm bảo thiết bị vận hành ổn định và hiệu quả.',
         achievements: [
-            'Thiết kế luồng mua hàng hợp nhất giúp chuyển đổi giỏ hàng giữa các nền tảng chỉ trong hai bước.',
-            'Dẫn dắt workshop cross-functional để ưu tiên roadmap dựa trên dữ liệu heatmap và khảo sát NPS.',
-            'Thiết lập bộ KPI trải nghiệm (task success, time-on-task) và dashboard theo dõi realtime.'
+           'Lắp đặt và kiểm tra hệ thống chiếu sáng và camera, đảm bảo thiết bị hoạt động ổn định.',
+           'Bảo trì và theo dõi hệ thống camera giám sát trong Nhà máy Nhiệt điện vĩnh tân  2.',
+           'Tham gia phối hợp với nhóm kỹ thuật để xử lý sự cố và tối ưu hiệu suất thiết bị.',
+           'Ghi nhận tình trạng thiết bị.'
         ],
-        tags: ['Camera', '', 'Product Analytics']
+       tags: ['Camera giám sát', 'Chiếu sáng', 'Bảo trì thiết bị']
     },
+    
     {
         id: 'no.001',
         name: 'Hệ thống mạng nội bộ & camera và video intercom cho chung cư D-Hommes',
-        subtitle: '2025 · Fintech Startup',
+        subtitle: 'Vị trí : Nhân viên kỹ thuật • hoàn thành công việc : 30/8/2025',
         highlight: 'Thiết bị vận hành ổn định',
         theme: 'emerald',
-        description: 'Ra mắt giải pháp quản lý ngân sách với bộ tính năng dòng tiền, cảnh báo chi tiêu và mục tiêu tiết kiệm cá nhân hóa.',
+        description: 'Lắp đặt và kiểm tra hệ thống mạng nội bộ, camera giám sát và video intercom cho chung cư, đảm bảo thiết bị vận hành ổn định và kết nối mượt mà.',
         achievements: [
-            'Tạo prototype fidelity cao cho onboarding đa quốc gia, giúp tỷ lệ hoàn tất đăng ký đạt 74%.',
-            'Hợp tác đội dữ liệu xây dựng hệ thống thông báo thông minh dựa trên phân cụm hành vi.',
-            'Thiết kế thư viện component tài chính đáp ứng chuẩn WCAG AA cho người khiếm thị màu.'
+            'Lắp đặt và cấu hình thiết bị mạng, camera và video intercom, đảm bảo hệ thống vận hành ổn định và kết nối chính xác.',
+            'Hỗi trợ thực hiện kiểm tra và nghiệm thu hệ thống theo tiêu chuẩn kỹ thuật, để ghi nhận kết quả chính xác.'
         ],
-        tags: ['Fintech UX', 'Data-driven', 'Accessibility']
+       tags: ['Mạng nội bộ', 'Camera giám sát', 'Nghiệm thu hệ thống']
     }
 ];
