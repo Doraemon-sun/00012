@@ -64,182 +64,182 @@ window.BLOG_ITEMS = [
         album: [
             {
                 src: 'image/0002/3.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/24.webp',
                 alt: 'mặt trước của tủ điều khiển máy đẩy bông'
             },
             {
                 src: 'image/0002/4.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/101.webp',
                 alt: 'Mặt sau của tủ điều khiển máy đẩy bông'
             },
                {
                 src: 'image/0002/5.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/102.webp',
                 alt: 'Thay khởi động từ , biến áp cho tủ điều khiển máy đẩy bông'
             },
             {
                 src: 'image/0002/6.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/103.webp',
                 alt: 'Máy đẩy bông hoạt động'
             },
              {
                 src: 'image/0002/7.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/104.webp',
                 alt: 'Máy đẩy bông 2'
             },
             {
                 src: 'image/0002/10.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/105.webp',
                 alt: 'Kiểm tra sự cố '
             },
                {
                 src: 'image/0002/11.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/106.webp',
                 alt: 'Kiểm tra sự cố '
             },
             {
                 src: 'image/0002/12.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/109.webp',
                 alt: 'kiểm tra và thay thế '
             },
              {
                 src: 'image/0002/14.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/110.webp',
                 alt: 'Dò dây để vẽ lại sơ đồ cho tủ điện '
             },
             {
                 src: 'image/0002/15.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/111.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/16.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/112.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/17.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/113.webp',
                 alt: 'Color palettes and sketches'
             },
              {
                 src: 'image/0002/18.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/114.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/19.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/115.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/20.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/116.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/21.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/117.webp',
                 alt: 'Color palettes and sketches'
             },
              {
                 src: 'image/0002/22.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/118.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/33.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/114.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/36.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/100.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/42.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/87.webp',
                 alt: 'Color palettes and sketches'
             },
              {
                 src: 'image/0002/43.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/30.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/44.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/31.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/45.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/32.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/46.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/32.webp',
                 alt: 'Color palettes and sketches'
             },
              {
                 src: 'image/0002/54.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/40.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/64.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/5.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/75.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/6.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/80.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/65.webp',
                 alt: 'Color palettes and sketches'
             },
              {
                 src: 'image/0002/81.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/66.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/82.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/66.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/95.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/78.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/93.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/75.webp',
                 alt: 'Color palettes and sketches'
             },
              {
                 src: 'image/0002/94.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/77.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/96.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/79.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/91.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/74.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/117.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/98.webp',
                 alt: 'Color palettes and sketches'
             },
              {
@@ -249,22 +249,22 @@ window.BLOG_ITEMS = [
             },
             {
                 src: 'image/0002/101.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/83.webp',
                 alt: 'Color palettes and sketches'
             },
                {
                 src: 'image/0002/102.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-01.webp',
+                srcWebp: 'image/webp/84.webp',
                 alt: 'Graphic designer desk with tools'
             },
             {
                 src: 'image/0002/103.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-02.webp',
+                srcWebp: 'image/webp/85.webp',
                 alt: 'Color palettes and sketches'
             },
             {
                 src: 'image/0002/105.jpg',
-                srcWebp: 'image/webp/blog-adobe-visual-03.webp',
+                srcWebp: 'image/webp/87.webp',
                 alt: 'Designer editing in Illustrator'
             }
         ]
