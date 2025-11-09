@@ -1,19 +1,20 @@
 window.EDUCATION = [
     {
-        id: 'fpt-university-design-degree',
-        timeframe: '2013 – 2017',
-        organization: 'Đại học FPT',
-        title: 'Cử nhân Thiết kế đồ họa & Truyền thông',
-        location: 'TP. Hồ Chí Minh, Việt Nam',
-        theme: 'red',
+        id: 'Trung cấp nghề',
+        timeframe: '2022 – 2024',
+        organization: 'Cao đẳng nghề Việt nam - Hàn quốc',
+        title: 'Công nhân kỹ thuật.',
+        location: 'Thủ Dầu Một, TP. Hồ Chí Minh, Việt Nam',
+        theme: 'emerald',
         summaryTitle: 'Tóm tắt',
-        summaryBody: 'Chương trình đào tạo chuyên sâu, nhấn mạnh UX/UI, nhận diện thương hiệu và thiết kế tương tác đa nền tảng.',
+        summaryBody: 'Chương trình đào tạo hướng thực hành, chú trọng kỹ năng vận hành, lắp đặt và bảo trì thiết bị điện trong môi trường công nghiệp.',
         coreTitle: 'Kiến thức cốt lõi',
         corePoints: [
-            'Nghiên cứu người dùng và xây dựng hành trình trải nghiệm.',
-            'Thiết kế hệ thống nhận diện thương hiệu và guideline trực quan.',
-            'Ứng dụng nguyên lý tương tác vào sản phẩm số.'
+            'Thực hành lắp đặt, vận hành và bảo trì hệ thống điện dân dụng – công nghiệp.',
+            'Đọc hiểu và triển khai bản vẽ kỹ thuật, sơ đồ mạch điều khiển',
+            'Thực hiện đấu nối, kiểm tra và xử lý sự cố thiết bị điện – tủ phân phối.',
+            'Tuân thủ tiêu chuẩn an toàn điện và quy trình kỹ thuật trong bảo trì.'
         ],
-        tags: ['UX Research', 'Brand Identity', 'Interactive Design']
+        tags: ['An toàn lao động', 'An toàn điện', 'Máy điện 1', 'Plc cơ bản', 'Trang bị điện']
     }
 ];
