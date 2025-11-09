@@ -1,11 +1,11 @@
 window.EXPERIENCES = [
     {
         id: 'creative-studio-senior-ux-ui-designer',
-        role: 'Senior UX/UI Designer',
-        company: 'Creative Studio',
+        role: 'Nhân viên kỹ thuật',
+        company: 'Nhà máy nhiệt điện vĩnh tân 2',
         theme: 'emerald',
-        location: 'TP. Hồ Chí Minh, Việt Nam',
-        timeframe: '2022 – Hiện tại',
+        location: 'Bình thuận, Việt Nam',
+        timeframe: '2/2025 – 8/2025',
         summary: 'Dẫn dắt đội ngũ thiết kế 5 người xây dựng hệ sinh thái ứng dụng thương mại điện tử, tối ưu trải nghiệm khách hàng đa kênh.',
         achievements: [
             'Xây dựng design system thống nhất cho web, mobile và POS, giảm 40% thời gian thiết kế.',
