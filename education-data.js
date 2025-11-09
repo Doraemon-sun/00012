@@ -5,7 +5,7 @@ window.EDUCATION = [
         organization: 'Đại học FPT',
         title: 'Cử nhân Thiết kế đồ họa & Truyền thông',
         location: 'TP. Hồ Chí Minh, Việt Nam',
-        theme: 'emerald',
+        theme: 'red',
         summaryTitle: 'Tóm tắt',
         summaryBody: 'Chương trình đào tạo chuyên sâu, nhấn mạnh UX/UI, nhận diện thương hiệu và thiết kế tương tác đa nền tảng.',
         coreTitle: 'Kiến thức cốt lõi',
